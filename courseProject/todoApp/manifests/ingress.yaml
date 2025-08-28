@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: todoapp-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: todoapp-svc
+                port:
+                  number: 2345 # Sends all traffic to this port. The port to access the Ingress is the same as the port to acess the load balancer, I guess?
