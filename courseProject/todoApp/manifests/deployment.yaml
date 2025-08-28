@@ -15,3 +15,6 @@ spec:
       containers:
         - name: todoapp
           image: jonschm/todoapp:1.2
+          env:
+            - name: PORT
+              value: '5000'
