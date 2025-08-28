@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: logoutput-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: lougoutput
+  ports:
+    - port: 2345 # Listens to this port, I think.
+      protocol: TCP
+      targetPort: 5000 # Sends all traffic to this port, I think.

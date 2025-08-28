@@ -4,18 +4,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  const randomString = Math.random().toString(36);
+  const output = `${new Date().toISOString()}: ${randomString}`;
+  res.send(output);
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`App listening to Port: ${port}`);
 });
-
-const randomString = Math.random().toString(36);
-
-const printRandomStringIntervally = () => {
-  console.log(`${new Date().toISOString()}: ${randomString}`);
-
-  setTimeout(printRandomStringIntervally, 5000);
-};
-printRandomStringIntervally();
