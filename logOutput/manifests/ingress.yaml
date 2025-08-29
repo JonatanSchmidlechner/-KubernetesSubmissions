@@ -12,4 +12,11 @@ spec:
               service:
                 name: logoutput-svc
                 port:
-                  number: 2345 # Sends all traffic to this port. The port to access the Ingress is the same as the port to acess the load balancer, I guess?
+                  number: 2345 # Sends all traffic to "/" to this port. The port to access the Ingress is the same as the port to acess the load balancer, I guess?
+          - path: /pingpong
+            pathType: Prefix
+            backend:
+              service:
+                name: pingpong-svc
+                port:
+                  number: 2346
