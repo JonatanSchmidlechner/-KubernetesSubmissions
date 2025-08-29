@@ -4,10 +4,8 @@ const app = express();
 const port = process.env.PORT || 3001;
 const filePath = process.env.FILE_PATH || 'pongCount.txt';
 let pongCount;
-console.log('start');
 try {
   const data = fs.readFileSync(filePath, 'utf-8');
-  console.log(data);
   pongCount = parseInt(data) || 0;
 } catch (err) {
   console.log('File not found or invalid, starting at 0');
