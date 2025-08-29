@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pingpong-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pingpong
+  template:
+    metadata:
+      labels:
+        app: pingpong
+    spec:
+      volumes:
+        - name: shared-log
+          persistentVolumeClaim:
+            claimName: logoutput-pingpong-pvc
+      containers:
+        - name: pingpong
+          image: jonschm/pingpong:1.1
+          volumeMounts: # Mount volume
+            - name: shared-log
+              mountPath: /usr/src/app/files
+          env:
+            - name: PORT
+              value: '5001'
+            - name: FILE_PATH
+              value: /usr/src/app/files/pongCount.txt

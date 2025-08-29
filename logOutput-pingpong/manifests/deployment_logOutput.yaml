@@ -12,20 +12,13 @@ spec:
       labels:
         app: logoutput
     spec:
-      volumes: # Define volume
+      volumes:
         - name: shared-log
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: logoutput-pingpong-pvc
       containers:
-        - name: logwriter
-          image: jonschm/logwriter:1.0
-          volumeMounts: # Mount volume
-            - name: shared-log
-              mountPath: /usr/src/app/files
-          env:
-            - name: FILE_PATH
-              value: /usr/src/app/files/randomLog.txt
-        - name: logreader
-          image: jonschm/logreader:1.0
+        - name: logoutput
+          image: jonschm/log_output:1.3
           volumeMounts: # Mount volume
             - name: shared-log
               mountPath: /usr/src/app/files
@@ -33,4 +26,4 @@ spec:
             - name: PORT
               value: '5000'
             - name: FILE_PATH
-              value: /usr/src/app/files/randomLog.txt
+              value: /usr/src/app/files/pongCount.txt
