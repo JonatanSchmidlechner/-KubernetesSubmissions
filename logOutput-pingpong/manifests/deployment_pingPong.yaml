@@ -25,6 +25,6 @@ spec:
               mountPath: /usr/src/app/files
           env:
             - name: PORT
-              value: '5002'
+              value: '5001'
             - name: FILE_PATH
               value: /usr/src/app/files/pongCount.txt
