@@ -12,9 +12,25 @@ spec:
       labels:
         app: logoutput
     spec:
+      volumes: # Define volume
+        - name: shared-log
+          emptyDir: {}
       containers:
-        - name: logoutput
-          image: jonschm/log_output:1.2
+        - name: logwriter
+          image: jonschm/logwriter:1.0
+          volumeMounts: # Mount volume
+            - name: shared-log
+              mountPath: /usr/src/app/files
+          env:
+            - name: FILE_PATH
+              value: /usr/src/app/files/randomLog.txt
+        - name: logreader
+          image: jonschm/logreader:1.0
+          volumeMounts: # Mount volume
+            - name: shared-log
+              mountPath: /usr/src/app/files
           env:
             - name: PORT
               value: '5000'
+            - name: FILE_PATH
+              value: /usr/src/app/files/randomLog.txt

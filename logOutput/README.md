@@ -22,4 +22,4 @@ kubectl apply -f https://raw.githubusercontent.com/JonatanSchmidlechner/-Kuberne
 kubectl apply -f https://raw.githubusercontent.com/JonatanSchmidlechner/-KubernetesSubmissions/refs/heads/main/logOutput/manifests/ingress.yaml
 ```
 
-5. (Optional) Visit [localhost:8081](http://localhost:8081/) to see the app's output:
+5. (Optional) Visit [localhost:8081/log-output](http://localhost:8081/log-output) to see the app's output:
