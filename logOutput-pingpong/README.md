@@ -16,7 +16,7 @@ git clone --branch 1.11 --depth 1 https://github.com/JonatanSchmidlechner/-Kuber
 3. Change directory to the project directory:
 
 ```powershell
-cd -KubernetesSubmissions/logOutput-pingPong
+cd .\-KubernetesSubmissions\logOutput-pingpong
 ```
 
 4. Apply all manifests at once:
