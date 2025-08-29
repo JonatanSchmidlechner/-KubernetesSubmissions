@@ -24,3 +24,8 @@ cd -KubernetesSubmissions/logOutput-pingPong
 ```powershell
 kubectl apply -f manifests/
 ```
+
+5. Open the apps:
+
+- Ping Pong: [http://localhost:8081/pingpong](http://localhost:8081/pingpong)
+- Log Output: [http://localhost:8081/](http://localhost:8081/)
