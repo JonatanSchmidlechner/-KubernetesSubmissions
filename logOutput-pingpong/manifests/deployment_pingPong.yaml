@@ -18,12 +18,13 @@ spec:
             claimName: logoutput-pingpong-pvc
       containers:
         - name: pingpong
-          image: jonschm/pingpong:1.1
+          image: jonschm/pingpong:1.11
+          imagePullPolicy: Always
           volumeMounts: # Mount volume
             - name: shared-log
               mountPath: /usr/src/app/files
           env:
             - name: PORT
-              value: '5001'
+              value: '5002'
             - name: FILE_PATH
               value: /usr/src/app/files/pongCount.txt
