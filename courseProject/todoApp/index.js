@@ -10,6 +10,8 @@ const port = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const todos = ['Learn Javascript', 'Learn React', 'Build a project'];
+
 const filePath =
   process.env.FILE_PATH || path.resolve(__dirname, 'images/image.png');
 
@@ -53,7 +55,7 @@ app.get('/', async (req, res) => {
     needNewImage = true;
     showImageOnceMore = false;
   }
-  res.render('index', { filePath: '/images/image.png' });
+  res.render('index', { filePath: '/images/image.png', todos: todos });
 });
 
 app.listen(port, () => {
