@@ -1,6 +1,8 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fetch from 'node-fetch';
+import { promises as fs } from 'fs';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -8,11 +10,53 @@ const port = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+const filePath =
+  process.env.FILE_PATH || path.resolve(__dirname, 'images/image.png');
+
+const imagesDir = path.join(__dirname, 'images');
+app.use('/images', express.static(imagesDir));
+app.set('view engine', 'ejs');
+
+let needNewImage = false;
+let showImageOnceMore = false;
+let isDownloadInProgress = false;
+
+const downloadImage = async () => {
+  isDownloadInProgress = true;
+  const imgURL = 'https://picsum.photos/800';
+  const response = await fetch(imgURL);
+  if (!response.ok) {
+    console.log(response.statusText);
+    throw new Error('Could not download image.');
+  }
+  const imgBuffer = Buffer.from(await response.arrayBuffer());
+  await fs.writeFile(filePath, imgBuffer);
+  needNewImage = false;
+  isDownloadInProgress = false;
+  setTimeout(() => {
+    console.log('8 seconds passed');
+    showImageOnceMore = true;
+  }, 8000);
+};
+
+app.get('/', async (req, res) => {
+  if (needNewImage && !isDownloadInProgress) {
+    try {
+      downloadImage();
+    } catch (error) {
+      console.log('Could not download image');
+    }
+  }
+  if (showImageOnceMore) {
+    console.log('Last image was shown, deleting image.');
+    needNewImage = true;
+    showImageOnceMore = false;
+  }
+  res.render('index', { filePath: '/images/image.png' });
 });
-console.log(__dirname);
-console.log(path.join(__dirname, 'index.html'));
+
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
+
+downloadImage();
