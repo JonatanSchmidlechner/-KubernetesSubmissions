@@ -12,6 +12,10 @@ spec:
       labels:
         app: todoapp
     spec:
+      volumes:
+        - name: image
+          persistentVolumeClaim:
+            claimName: todoapp-pvc
       containers:
         - name: todoapp
           image: jonschm/todoapp:1.4
