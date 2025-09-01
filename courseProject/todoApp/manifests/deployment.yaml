@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: todoapp
-          imagePullPolicy: Always
           image: jonschm/todoapp:1.4
+          imagePullPolicy: Always
           env:
             - name: PORT
               value: '5000'
