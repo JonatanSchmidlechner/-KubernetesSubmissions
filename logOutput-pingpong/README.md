@@ -2,10 +2,14 @@
 
 ## Deploy the whole project
 
-1. Ensure your cluster is running and port-forwarding is set:
+1. Ensure your cluster is running and port-forwarding is set and a local path "/tmp/kube" is created to node:
 
 - local port 8082 → agent 0 port 30080
 - local port 8081 → load balancer port 80
+
+```powershell
+docker exec k3d-k3s-default-agent-0 mkdir -p /tmp/kube
+```
 
 2. Clone the repository at a tagged release:
 
