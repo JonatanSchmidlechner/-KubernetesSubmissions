@@ -14,9 +14,10 @@ spec:
     spec:
       containers:
         - name: todoapp
+          imagePullPolicy: Always
           image: jonschm/todoapp:1.4
           env:
             - name: PORT
               value: '5000'
             - name: FILE_PATH
-              value: /usr/src/app/files/image
+              value: /usr/src/app/images/image.png

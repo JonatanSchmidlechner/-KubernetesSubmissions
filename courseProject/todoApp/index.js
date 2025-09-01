@@ -13,8 +13,7 @@ const __dirname = path.dirname(__filename);
 const filePath =
   process.env.FILE_PATH || path.resolve(__dirname, 'images/image.png');
 
-const imagesDir = path.join(__dirname, 'images');
-app.use('/images', express.static(imagesDir));
+app.use('/images', express.static(path.dirname(filePath)));
 app.set('view engine', 'ejs');
 
 let needNewImage = false;

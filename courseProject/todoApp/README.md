@@ -2,24 +2,31 @@
 
 ## Instructions to deploy the app
 
-1. Make sure your cluster is running and port-forward as follows: local port 8082 -> agent 0 port 30080, and local port 8081 -> load balancer port 80.
+1. Ensure your cluster is running and port-forwarding is set and a local path "/tmp/kube" is created to node:
 
-2. Create the deployment by applying deployment.yaml from the internet:
+- local port 8082 → agent 0 port 30080
+- local port 8081 → load balancer port 80
 
 ```powershell
-kubectl apply -f https://raw.githubusercontent.com/JonatanSchmidlechner/-KubernetesSubmissions/refs/heads/main/courseProject/todoApp/manifests/deployment.yaml
+docker exec {node-name} mkdir -p /tmp/kube
 ```
 
-3. Create the service resource by applying service.yaml from the internet:
+2. Clone the repository at a tagged release:
 
 ```powershell
-kubectl apply -f https://raw.githubusercontent.com/JonatanSchmidlechner/-KubernetesSubmissions/refs/heads/main/courseProject/todoApp/manifests/service.yaml
+git clone --branch 1.12 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
-4. Create the ingress resource by applying ingress.yaml from the internet:
+3. Change directory to the project directory:
 
 ```powershell
-kubectl apply -f https://raw.githubusercontent.com/JonatanSchmidlechner/-KubernetesSubmissions/refs/heads/main/courseProject/todoApp/manifests/ingress.yaml
+cd .\-KubernetesSubmissions\courseProject\todoApp
+```
+
+4. Apply all manifests at once:
+
+```powershell
+kubectl apply -f manifests/
 ```
 
 5. (Optional) Visit [localhost:8081](http://localhost:8081/) to see the app's output:
