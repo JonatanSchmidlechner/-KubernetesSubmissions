@@ -13,7 +13,10 @@ const __dirname = path.dirname(__filename);
 const filePath =
   process.env.FILE_PATH || path.resolve(__dirname, 'images/image.png');
 
-app.use('/images', express.static(path.dirname(filePath)));
+const imagesDir = path.dirname(filePath);
+await fs.mkdir(imagesDir, { recursive: true });
+
+app.use('/images', express.static(imagesDir));
 app.set('view engine', 'ejs');
 
 let needNewImage = false;
