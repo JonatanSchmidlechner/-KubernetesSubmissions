@@ -36,9 +36,8 @@ const downloadImage = async () => {
   needNewImage = false;
   isDownloadInProgress = false;
   setTimeout(() => {
-    console.log('8 seconds passed');
     showImageOnceMore = true;
-  }, 8000);
+  }, 600000);
 };
 
 app.get('/', async (req, res) => {
@@ -61,4 +60,14 @@ app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
 
-downloadImage();
+try {
+  await fs.access(filePath);
+  console.log('File exists');
+  setTimeout(() => {
+    showImageOnceMore = true;
+  }, 600000);
+  isDownloadInProgress = false;
+} catch {
+  console.log('File does not exist');
+  downloadImage();
+}

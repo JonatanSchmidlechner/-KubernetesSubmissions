@@ -25,3 +25,6 @@ spec:
               value: '5000'
             - name: FILE_PATH
               value: /usr/src/app/images/image.png
+          volumeMounts:
+            - name: image
+              mountPath: /usr/src/app/images
