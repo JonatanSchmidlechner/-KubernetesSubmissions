@@ -2,19 +2,15 @@
 
 ## Deploy the whole project
 
-1. Ensure your cluster is running and port-forwarding is set and a local path "/tmp/kube" is created to node:
+1. Ensure your cluster is running and port-forwarding is set:
 
 - local port 8082 → agent 0 port 30080
 - local port 8081 → load balancer port 80
 
-```powershell
-docker exec k3d-k3s-default-agent-0 mkdir -p /tmp/kube
-```
-
 2. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 1.11 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 1.2 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
 3. Change directory to the project directory:
@@ -32,4 +28,4 @@ kubectl apply -f manifests/
 5. Open the apps:
 
 - Ping Pong: [http://localhost:8081/pingpong](http://localhost:8081/pingpong)
-- Log Output: [localhost:8081/log-output](http://localhost:8081/log-output)
+- Log Output: [localhost:8081/log-output](http://localhost:8081/)
