@@ -2,7 +2,7 @@ import express from 'express';
 import fetch from "node-fetch"
 const app = express();
 const port = process.env.PORT || 3000;
-const pingURL = `http://:pingpong-svc/pings:2346/pings`
+const pingURL = `http://pingpong-svc:2346/pings`
 const randomString = Math.random().toString(36);
 
 app.get('/', async (req, res) => {
