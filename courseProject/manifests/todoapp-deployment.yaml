@@ -18,7 +18,7 @@ spec:
             claimName: todoapp-pvc
       containers:
         - name: todoapp
-          image: jonschm/todoapp:1.6
+          image: jonschm/todoapp:1.63
           imagePullPolicy: Always
           env:
             - name: PORT
@@ -28,7 +28,9 @@ spec:
             - name: TODO_BACKEND_URL
               value: http://todo-backend-svc:2346
             - name: TODO_APP_URL
-              value: http://todo-app-svc:2345
+              value: http://todoapp-svc:2345
+            - name: EXTERNAL_TODO_APP_URL
+              value: "http://localhost:8081"
           volumeMounts:
             - name: image
               mountPath: /usr/src/app/images
