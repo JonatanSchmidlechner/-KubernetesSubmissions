@@ -14,9 +14,7 @@ spec:
     spec:
       containers:
         - name: logoutput
-          image: jonschm/log_output:1.4
+          image: jonschm/log_output:1.41
           env:
             - name: PORT
               value: '5000'
-            - name: PING_PORT
-              value: '5001'
