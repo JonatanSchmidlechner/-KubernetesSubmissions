@@ -10,7 +10,7 @@
 2. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 2.1 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 2.3 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
 3. Change directory to the project directory:
