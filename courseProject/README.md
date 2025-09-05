@@ -13,7 +13,7 @@ docker exec {node-name} mkdir -p /tmp/kube
 2. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 2.2 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 2.4 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
 3. Change directory to the project directory:
