@@ -19,22 +19,22 @@ spec:
             name: logoutput-config
       containers:
         - name: logoutput
-          image: jonschm/log_output:1.42
+          image: jonschm/log_output:1.56
           env:
             - name: PORT
               value: "5000"
             - name: INFO_FILE_PATH
               value: /usr/src/app/config/information.txt
             - name: MESSAGE
-              valuefrom:
+              valueFrom:
                 configMapKeyRef:
                   name: logoutput-config
                   key: message
             - name: PING_URL
-              valuefrom:
+              valueFrom:
                 configMapKeyRef:
                   name: logoutput-config
-                  key: message
+                  key: pingUrl
           volumeMounts:
             - name: config
               mountPath: /usr/src/app/config
