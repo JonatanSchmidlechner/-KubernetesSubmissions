@@ -4,7 +4,6 @@ metadata:
   name: todoapp-pvc # name of the volume claim, this will be used in the deployment
   namespace: project
 spec:
-  storageClassName: todoapp-pv # this is the name of the persistent volume we are claiming
   accessModes:
     - ReadWriteOnce
   resources:
