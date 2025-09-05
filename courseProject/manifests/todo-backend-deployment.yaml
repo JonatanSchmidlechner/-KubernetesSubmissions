@@ -19,4 +19,4 @@ spec:
           imagePullPolicy: Always
           env:
             - name: PORT
-              value: '5002'
+              value: "5002"

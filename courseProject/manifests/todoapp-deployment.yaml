@@ -23,7 +23,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: PORT
-              value: '5000'
+              value: "5000"
             - name: FILE_PATH
               value: /usr/src/app/images/image.png
             - name: TODO_BACKEND_URL

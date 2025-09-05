@@ -1,17 +1,26 @@
 import express from 'express';
-import fetch from "node-fetch"
+import fetch from 'node-fetch';
+import fs from 'fs/promises';
 const app = express();
 const port = process.env.PORT || 3000;
-const pingURL = `http://pingpong-svc:2346/pings`
+const pingURL = process.env.PING_URL | `http://localhost:3001/pings`;
+const infoFilePath = process.env.INFO_FILE || './config/information.txt';
 const randomString = Math.random().toString(36);
 
 app.get('/', async (req, res) => {
-  const response = await fetch(pingURL)
+  const response = await fetch(pingURL);
   const data = await response.json();
-  const output = `${new Date().toISOString()}: ${randomString}.\nPing / Pongs: ${data.pings}`;
+  let fileContent = '';
+  try {
+    fileContent = fs.readFile(infoFilePath, 'utf-8');
+  } catch (error) {
+    console.log(error);
+    fileContent = 'Error: Could not read file content';
+  }
+
+  const output = `file content: ${fileContent}\nenv variable: MESSAGE=${process.env.MESSAGE}\n${new Date().toISOString()}: ${randomString}.\nPing / Pongs: ${data.pings}`;
   res.type('text/plain');
   res.send(output);
-
 });
 
 app.listen(port, () => {
