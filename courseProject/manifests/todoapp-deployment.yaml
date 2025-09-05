@@ -28,8 +28,6 @@ spec:
               value: /usr/src/app/images/image.png
             - name: TODO_BACKEND_URL
               value: http://todo-backend-svc:2346
-            - name: TODO_APP_URL
-              value: http://todoapp-svc:2345
             - name: EXTERNAL_TODO_APP_URL
               value: "http://localhost:8081"
           volumeMounts:
