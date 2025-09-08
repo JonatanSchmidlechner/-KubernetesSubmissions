@@ -15,8 +15,33 @@ spec:
     spec:
       containers:
         - name: pingpong
-          image: jonschm/pingpong:1.21
+          image: jonschm/pingpong:1.31
           imagePullPolicy: Always
           env:
             - name: PORT
               value: "5001"
+            - name: DATABASE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgres_user
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgres_db
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgres_host
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgres_port
