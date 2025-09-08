@@ -13,7 +13,7 @@ docker exec {node-name} mkdir -p /tmp/kube
 2. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 2.6 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 2.8 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
 3. Change directory to the project directory:
@@ -28,4 +28,4 @@ cd .\-KubernetesSubmissions\courseProject
 kubectl apply -f manifests/
 ```
 
-5. (Optional) Visit [localhost:8081](http://localhost:8081/) to see the app's output:
+5. (Optional) Wait for the application to start and visit [localhost:8081](http://localhost:8081/) to see the app's output:
