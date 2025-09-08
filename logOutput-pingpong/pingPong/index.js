@@ -37,10 +37,6 @@ const port = process.env.PORT || 3001;
 
 app.get('/pingpong', async (req, res) => {
   pingCount++;
-  const query = {
-    text: 'UPDATE pingCount SET VALUES($1)',
-    values: [pingCount],
-  };
   const result = await pool.query('UPDATE pingCount SET count = count + 1');
 
   res.send({ pings: pingCount });
