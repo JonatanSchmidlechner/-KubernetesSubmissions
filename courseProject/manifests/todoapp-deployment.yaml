@@ -27,7 +27,10 @@ spec:
             - name: FILE_PATH
               value: /usr/src/app/images/image.png
             - name: TODO_BACKEND_URL
-              value: http://todo-backend-svc:2346
+              valueFrom:
+                configMapKeyRef:
+                  key: project-config
+                  value: todo_backend_url
             - name: EXTERNAL_TODO_APP_URL
               value: "http://localhost:8081"
           volumeMounts:
