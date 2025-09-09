@@ -4,7 +4,6 @@
 
 1. Ensure your cluster is running and port-forwarding is set:
 
-- local port 8082 → agent 0 port 30080
 - local port 8081 → load balancer port 80
 
 2. Clone the repository at a tagged release:

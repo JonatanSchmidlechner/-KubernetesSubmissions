@@ -37,9 +37,13 @@ const port = process.env.PORT || 3001;
 
 app.get('/pingpong', async (req, res) => {
   pingCount++;
-  const result = await pool.query('UPDATE pingCount SET count = count + 1');
-
-  res.send({ pings: pingCount });
+  try {
+    const result = await pool.query('UPDATE pingCount SET count = count + 1');
+    res.send({ pings: pingCount });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Could not update pingCount');
+  }
 });
 
 app.get('/pings', (req, res) => {
