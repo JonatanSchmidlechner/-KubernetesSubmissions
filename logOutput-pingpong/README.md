@@ -28,4 +28,4 @@ kubectl apply -f manifests/
 5. Open the apps:
 
 - Ping Pong: [http://localhost:8081/pingpong](http://localhost:8081/pingpong)
-- Log Output: [localhost:8081/log-output](http://localhost:8081/)
+- Log Output: [http://localhost:8081/log-output](http://localhost:8081/)
