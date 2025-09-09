@@ -29,8 +29,8 @@ spec:
             - name: TODO_BACKEND_URL
               valueFrom:
                 configMapKeyRef:
-                  key: project-config
-                  value: todo_backend_url
+                  name: project-config
+                  key: todo_backend_url
             - name: EXTERNAL_TODO_APP_URL
               value: "http://localhost:8081"
           volumeMounts:

@@ -1,21 +1,21 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: hello
+  name: todo-generator
 spec:
-  schedule: "* * * * *"
+  schedule: "0 * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
             - name: todo-generator
-              image: jonschm/todo-generator:1.0
+              image: jonschm/todo-generator:1.1
               imagePullPolicy: IfNotPresent
               env:
                 - name: TODO_BACKEND_URL
                   valueFrom:
                     configMapKeyRef:
-                      key: project-config
-                      value: todo_backend_url
+                      name: project-config
+                      key: todo_backend_url
           restartPolicy: OnFailure

@@ -19,7 +19,7 @@ const postArticle = async (pageURL) => {
     const response = await fetch(`${todoBackendBaseURL}/todos`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ todo: pageURL }),
+      body: JSON.stringify({ todo: `Read ${pageURL}` }),
     });
     if (!response.ok) {
       console.log('Could not post pageURL. Response is not ok');
