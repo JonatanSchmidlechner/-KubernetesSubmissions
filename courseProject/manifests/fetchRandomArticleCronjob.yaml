@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: todo-generator
 spec:
-  schedule: "0 * * * *"
+  schedule: "33 * * * *"
   jobTemplate:
     spec:
       template:
