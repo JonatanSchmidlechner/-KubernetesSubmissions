@@ -12,13 +12,22 @@ app.get('/todos', async (req, res) => {
     });
     res.json({ todos: todos });
   } catch (error) {
-    res.status(500).send();
+    console.log(error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 app.post('/todos', async (req, res) => {
   try {
     const newTodo = req.body.todo;
-    if (!newTodo) return res.status(400).send('Todo is required');
+    console.log(newTodo);
+    if (!newTodo) return res.status(400).json({ message: 'Todo is required.' });
+    if (typeof newTodo !== 'string') {
+      return res.status(400).json({ message: 'Todo must be a string.' });
+    }
+    if (newTodo.length > 140)
+      return res
+        .status(400)
+        .json({ message: 'Todo must be less than 140 characters.' });
     const query = {
       text: `
         INSERT INTO todos (todo)
@@ -30,10 +39,12 @@ app.post('/todos', async (req, res) => {
     if (result.rowCount === 1) {
       res.status(201).send(result.rows[0]);
     } else {
-      res.status(500).send('Error in inserting to database.');
+      res.status(500).json({ message: 'Error in inserting to database.' });
     }
   } catch (error) {
-    res.status(400).send();
+    res.status(400).json({
+      message: 'Internal server error.',
+    });
   }
 });
 

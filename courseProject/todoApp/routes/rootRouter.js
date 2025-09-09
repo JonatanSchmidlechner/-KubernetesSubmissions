@@ -31,7 +31,9 @@ rootRouter.post('/todos', async (req, res) => {
       body: JSON.stringify(data),
     });
     if (!response.ok) {
-      res.status(response.status).send('Failed to create todo');
+      res
+        .status(response.status)
+        .send(response.message || 'Failed to create todo');
     }
 
     res.redirect('/');
