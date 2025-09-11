@@ -33,4 +33,4 @@ kubectl get svc -n exercises pingpong-svc
 
 5. Then open the app in browser using the URL below:
 
-- http://<EXTERNAL-IP>/pingpong
+- `http://<EXTERNAL-IP>/pingpong`
