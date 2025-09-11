@@ -4,10 +4,10 @@ metadata:
   name: pingpong-svc
   namespace: exercises
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: pingpong
   ports:
-    - port: 2346 # Listens to this port, I think.
+    - port: 80
       protocol: TCP
-      targetPort: 5001 # Sends all traffic to this port, I think.
+      targetPort: 5001

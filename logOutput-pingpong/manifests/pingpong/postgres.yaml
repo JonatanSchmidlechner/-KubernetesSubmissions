@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: postgres-stset
+  namespace: exercises
+
 spec:
   serviceName: postgres-svc
   replicas: 1
@@ -38,21 +40,23 @@ spec:
           volumeMounts:
             - name: postgres-data-storage
               mountPath: /var/lib/postgresql/data
+              subPath: postgres
   volumeClaimTemplates:
     - metadata:
         name: postgres-data-storage
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: local-path
+        storageClassName: standard
         resources:
           requests:
-            storage: 100Mi
+            storage: 1Gi
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: postgres-svc
+  namespace: exercises
   labels:
     app: postgres
 spec:
