@@ -11,7 +11,7 @@
 1. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 3.2 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 3.3 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
 2. Change directory to the project directory:
@@ -30,6 +30,7 @@ kubectl apply -f manifests/ --recursive
 
 ```powershell
 kubectl get ingress -n exercises logoutput-pingpong-ingress --watch
+kubectl get gateway -n exercises logoutput-pingpong-gateway --watch
 ```
 
 5. Then open the app in browser using the URL below. This will take a moment to deploy, responses may be 404 and 502 as it becomes available.:
