@@ -4,10 +4,10 @@ metadata:
   name: logoutput-svc
   namespace: exercises
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: logoutput
   ports:
-    - port: 2345 # Listens to this port, I think.
+    - port: 2345 # Listens to this port.
       protocol: TCP
-      targetPort: 5000 # Sends all traffic to this port, I think.
+      targetPort: 5000 # Sends all traffic to this port.

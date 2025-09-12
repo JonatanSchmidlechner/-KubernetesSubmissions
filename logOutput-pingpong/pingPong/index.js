@@ -35,6 +35,10 @@ if (res.rows.length === 0) {
 const app = express();
 const port = process.env.PORT || 3001;
 
+app.get('/', (req, res) => {
+  res.status(200).send();
+});
+
 app.get('/pingpong', async (req, res) => {
   pingCount++;
   try {

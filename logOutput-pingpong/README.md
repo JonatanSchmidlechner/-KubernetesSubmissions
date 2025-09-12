@@ -1,30 +1,38 @@
-# Log Output & Ping Pong (shared PV)
+# Log Output & Ping Pong
 
 ## Deploy the whole project
 
-1. Ensure your cluster is running and port-forwarding is set:
+## Prerequisites
 
-- local port 8081 → load balancer port 80
+- A running GKE cluster.
+- `kubectl` CLI installed and configured to point to your cluster.
+- `gcloud` CLI installed and authenticated (if needed for cluster management).
 
-2. Clone the repository at a tagged release:
+1. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 2.7 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 3.2 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
-3. Change directory to the project directory:
+2. Change directory to the project directory:
 
 ```powershell
 cd .\-KubernetesSubmissions\logOutput-pingpong/
 ```
 
-4. Apply all manifests at once:
+3. Apply manifest files:
 
 ```powershell
-kubectl apply -f manifests/
+kubectl apply -f manifests/ --recursive
 ```
 
-5. Open the apps:
+4. Wait for the app to deploy and check the external IP
 
-- Ping Pong: [http://localhost:8081/pingpong](http://localhost:8081/pingpong)
-- Log Output: [http://localhost:8081/log-output](http://localhost:8081/)
+```powershell
+kubectl get ingress -n exercises logoutput-pingpong-ingress --watch
+```
+
+5. Then open the app in browser using the URL below. This will take a moment to deploy, responses may be 404 and 502 as it becomes available.:
+
+- `http://<EXTERNAL-IP>/`
+- `http://<EXTERNAL-IP>/pingpong`

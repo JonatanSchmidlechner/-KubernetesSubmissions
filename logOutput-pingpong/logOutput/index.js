@@ -8,7 +8,6 @@ const infoFilePath = process.env.INFO_FILE_PATH || './config/information.txt';
 const randomString = Math.random().toString(36);
 
 app.get('/', async (req, res) => {
-  console.log('info file path:', infoFilePath);
   const response = await fetch(pingURL);
   const data = await response.json();
   let fileContent = '';
@@ -21,7 +20,7 @@ app.get('/', async (req, res) => {
 
   const output = `file content: ${fileContent}\nenv variable: MESSAGE=${process.env.MESSAGE}\n${new Date().toISOString()}: ${randomString}.\nPing / Pongs: ${data.pings}`;
   res.type('text/plain');
-  res.send(output);
+  res.status(200).send(output);
 });
 
 app.listen(port, () => {
