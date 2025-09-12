@@ -11,7 +11,7 @@
 1. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 3.3 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 3.4 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
 2. Change directory to the project directory:
@@ -36,3 +36,5 @@ kubectl get gateway -n exercises logoutput-pingpong-gateway --watch
 
 - `http://<EXTERNAL-IP>/`
 - `http://<EXTERNAL-IP>/pingpong`
+
+Since in this version the /pingpong route was internally changed to /, the pingCount increases automatically. Probably because of healthchecks.

@@ -35,15 +35,11 @@ if (res.rows.length === 0) {
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.get('/', (req, res) => {
-  res.status(200).send();
-});
-
-app.get('/pingpong', async (req, res) => {
+app.get('/', async (req, res) => {
   pingCount++;
   try {
     const result = await pool.query('UPDATE pingCount SET count = count + 1');
-    res.send({ pings: pingCount });
+    res.status(200).send({ pings: pingCount });
   } catch (error) {
     console.log(error);
     res.status(500).send('Could not update pingCount');
