@@ -12,5 +12,5 @@ spec:
             type: PathPrefix
             value: /pingpong
       backendRefs:
-        - name: logoutput-svc
+        - name: pingpong-svc
           port: 2346

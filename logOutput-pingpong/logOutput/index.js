@@ -8,8 +8,15 @@ const infoFilePath = process.env.INFO_FILE_PATH || './config/information.txt';
 const randomString = Math.random().toString(36);
 
 app.get('/', async (req, res) => {
-  const response = await fetch(pingURL);
-  const data = await response.json();
+  let pings;
+  try {
+    const response = await fetch(pingURL);
+    const data = await response.json();
+    pings = data.pings;
+  } catch (error) {
+    console.log(error);
+    pings = 'Error: Could not retrieve pings.';
+  }
   let fileContent = '';
   try {
     fileContent = await fs.readFile(infoFilePath, 'utf-8');
@@ -18,7 +25,7 @@ app.get('/', async (req, res) => {
     fileContent = 'Error: Could not read file content';
   }
 
-  const output = `file content: ${fileContent}\nenv variable: MESSAGE=${process.env.MESSAGE}\n${new Date().toISOString()}: ${randomString}.\nPing / Pongs: ${data.pings}`;
+  const output = `file content: ${fileContent}\nenv variable: MESSAGE=${process.env.MESSAGE}\n${new Date().toISOString()}: ${randomString}.\nPing / Pongs: ${pings}`;
   res.type('text/plain');
   res.status(200).send(output);
 });

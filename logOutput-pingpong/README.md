@@ -29,7 +29,6 @@ kubectl apply -f manifests/ --recursive
 4. Wait for the app to deploy and check the external IP
 
 ```powershell
-kubectl get ingress -n exercises logoutput-pingpong-ingress --watch
 kubectl get gateway -n exercises logoutput-pingpong-gateway --watch
 ```
 
