@@ -48,7 +48,8 @@ jobs:
       - name: Build and push all apps
         run: |
           for app in todoApp todo-backend todoGenerator; do
-            IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$app:$BRANCH-$GITHUB_SHA
+            lower_app=$(echo "$app" | tr '[:upper:]' '[:lower:]')
+            IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$lower_app:$BRANCH-$GITHUB_SHA
             echo "Building $app -> $IMAGE_TAG"
             docker build -t $IMAGE_TAG $app
             docker push $IMAGE_TAG
@@ -60,11 +61,13 @@ jobs:
       - name: Deploy
         run: |
           for app in todoApp todo-backend todoGenerator; do
-            IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$app:$BRANCH-$GITHUB_SHA
+            lower_app=$(echo "$app" | tr '[:upper:]' '[:lower:]')
+            IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$lower_app:$BRANCH-$GITHUB_SHA
             kustomize edit set image $app=$IMAGE_TAG
           done
           kustomize build . | kubectl apply -f -
           for app in todoApp todo-backend todoGenerator; do
-            kubectl rollout status deployment $app
+            lower_app=$(echo "$app" | tr '[:upper:]' '[:lower:]')
+            kubectl rollout status deployment $lower_app
           done
           kubectl get services -o wide
