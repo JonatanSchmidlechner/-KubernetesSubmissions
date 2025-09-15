@@ -26,7 +26,7 @@ cd .\-KubernetesSubmissions\courseProject/
 kubectl apply -k .
 ```
 
-4. Wait for the app to deploy and check the external IP
+4. Wait for the app to deploy and check the Address
 
 ```powershell
 kubectl get gateway -n project todoapp-gateway --watch
