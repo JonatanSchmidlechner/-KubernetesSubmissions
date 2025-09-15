@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: pingpong
-          image: jonschm/pingpong:1.6
+          image: PINGPONG/IMAGE
           imagePullPolicy: Always
           env:
             - name: PORT

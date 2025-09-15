@@ -5,8 +5,6 @@ import { handleImageState } from '../services/imageManager.js';
 const rootRouter = express.Router();
 const todoBackendBaseURL =
   process.env.TODO_BACKEND_URL || 'http://localhost:3002';
-const externalTodoAppBaseURL =
-  process.env.EXTERNAL_TODO_APP_URL || 'http://localhost:3000';
 
 rootRouter.get('/', async (req, res) => {
   await handleImageState();
@@ -14,10 +12,9 @@ rootRouter.get('/', async (req, res) => {
   const data = await response.json();
   const todos = data.todos;
 
-  res.render('index', {
+  res.status(200).render('index', {
     filePath: '/images/image.png',
     todos: todos,
-    todoAppBaseURL: externalTodoAppBaseURL,
   });
 });
 

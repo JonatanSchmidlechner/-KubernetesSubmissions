@@ -7,7 +7,7 @@
   <body>
     <h1>The project App</h1>
     <img src="<%= filePath %>" alt="Something" />
-    <form action=<%= `${todoAppBaseURL}/todos` %> method="post">
+    <form action=<%= `/todos` %> method="post">
       <div style="display: flex">
         <input id="postTodo" name="todo" type="text" maxlength="140" />
         <input type="submit"  value="Create todo">

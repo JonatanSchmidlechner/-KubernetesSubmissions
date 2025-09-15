@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./fetchRandomArticleCronjob.yaml
+images:
+  - name: TODO_GENERATOR
+    newName: jonschm/todo-generator
+    newTag: "1.1"
