@@ -69,7 +69,7 @@ jobs:
             kustomize edit set image $app=$IMAGE_TAG
           done
           kustomize build . | kubectl apply -f -
-          for app in todo-app todo-backend todo-generator; do
+          for app in todo-app todo-backend; do
             kubectl rollout status deployment $app -n project
           done
           kubectl get services -o wide
