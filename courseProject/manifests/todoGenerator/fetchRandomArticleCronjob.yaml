@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
             - name: todo-generator
-              image: TODO_GENERATOR
+              image: todoGenerator
               imagePullPolicy: IfNotPresent
               env:
                 - name: TODO_BACKEND_URL

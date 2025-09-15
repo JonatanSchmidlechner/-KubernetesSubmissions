@@ -2,6 +2,8 @@ name: Release application
 
 on:
   push:
+    paths:
+      - courseProject/**
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
@@ -43,18 +45,26 @@ jobs:
       - name: "Form the image name"
         run: echo "IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$IMAGE:$BRANCH-$GITHUB_SHA" >> $GITHUB_ENV
 
-      - name: Build
-        run: docker build --tag $IMAGE_TAG .
-
-      - name: Publish
-        run: docker push $IMAGE_TAG
+      - name: Build and push all apps
+        run: |
+          for app in pingpong logOutput todoApp; do
+            IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$app:$BRANCH-$GITHUB_SHA
+            echo "Building $app -> $IMAGE_TAG"
+            docker build -t $IMAGE_TAG $app
+            docker push $IMAGE_TAG
+          done
 
       - name: Set up Kustomize
         uses: imranismail/setup-kustomize@v2.1.0
 
       - name: Deploy
-        run: |-
-          kustomize edit set image PROJECT/IMAGE=$IMAGE_TAG
+        run: |
+          for app in pingpong logOutput todoApp; do
+            IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$app:$BRANCH-$GITHUB_SHA
+            kustomize edit set image $app=$IMAGE_TAG
+          done
           kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment $SERVICE
+          for app in pingpong logOutput todoApp; do
+            kubectl rollout status deployment $app
+          done
           kubectl get services -o wide
