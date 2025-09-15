@@ -47,6 +47,7 @@ jobs:
 
       - name: Build and push all apps
         run: |
+          cd courseProject
           for app in todoApp todo-backend todoGenerator; do
             lower_app=$(echo "$app" | tr '[:upper:]' '[:lower:]')
             IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$lower_app:$BRANCH-$GITHUB_SHA
