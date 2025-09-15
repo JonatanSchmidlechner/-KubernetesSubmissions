@@ -26,7 +26,7 @@ cd .\-KubernetesSubmissions\logOutput-pingpong/
 kubectl apply -f manifests/ --recursive
 ```
 
-4. Wait for the app to deploy and check the external IP
+4. Wait for the app to deploy and check the address.
 
 ```powershell
 kubectl get gateway -n exercises logoutput-pingpong-gateway --watch
