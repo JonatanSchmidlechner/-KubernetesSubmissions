@@ -73,6 +73,6 @@ jobs:
           kustomize build . | kubectl apply -f -
           for app in todoApp todo-backend todoGenerator; do
             lower_app=$(echo "$app" | tr '[:upper:]' '[:lower:]')
-            kubectl rollout status deployment $lower_app
+            kubectl rollout status deployment $lower_app-dep -n project
           done
           kubectl get services -o wide
