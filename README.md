@@ -37,3 +37,4 @@
 - [3.2.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/tree/3.2/logOutput-pingpong)
 - [3.3.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/tree/3.3/logOutput-pingpong)
 - [3.4.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/tree/3.4/logOutput-pingpong)
+- [3.5.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/tree/3.5/courseProject)
