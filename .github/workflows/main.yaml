@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - "courseProject/**"
+  delete:
+    branches:
+      - "*"
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
