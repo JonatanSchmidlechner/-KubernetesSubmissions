@@ -7,5 +7,5 @@ resources:
   - ./route.yaml
 images:
   - name: todoApp
-    newName: jonschm/todoapp
+    newName: jongcp/todoapp
     newTag: "1.91"

@@ -4,5 +4,5 @@ resources:
   - ./fetchRandomArticleCronjob.yaml
 images:
   - name: todoGenerator
-    newName: jonschm/todo-generator
+    newName: jongcp/todo-generator
     newTag: "1.1"

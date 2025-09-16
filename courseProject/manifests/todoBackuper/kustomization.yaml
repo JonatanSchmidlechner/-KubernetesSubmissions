@@ -4,5 +4,5 @@ resources:
   - ./backup-cronjob.yaml
 images:
   - name: todoBackuper
-    newName: jonschm/todo-backuper
+    newName: jongcp/todo-backuper
     newTag: "1.0"

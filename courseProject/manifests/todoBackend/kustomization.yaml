@@ -7,5 +7,5 @@ resources:
   - ./todo-backend-service.yaml
 images:
   - name: todoBackend
-    newName: jonschm/todo-backend
+    newName: jongcp/todo-backend
     newTag: "1.21"
