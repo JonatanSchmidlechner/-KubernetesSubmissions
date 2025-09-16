@@ -3,4 +3,10 @@ kind: Kustomization
 resources:
   - ./fetchRandomArticleCronjob.yaml
 images:
+<<<<<<< HEAD
   - name: todo-generator
+=======
+  - name: todoGenerator
+    newName: jongcp/todo-generator
+    newTag: "1.1"
+>>>>>>> 652cb7b (Changed to use gcp images instead of dockerhub images.)

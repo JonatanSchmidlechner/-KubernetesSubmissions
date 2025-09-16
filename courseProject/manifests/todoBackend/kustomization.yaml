@@ -6,4 +6,10 @@ resources:
   - ./todo-backend-deployment.yaml
   - ./todo-backend-service.yaml
 images:
+<<<<<<< HEAD
   - name: todo-backend
+=======
+  - name: todoBackend
+    newName: jongcp/todo-backend
+    newTag: "1.21"
+>>>>>>> 652cb7b (Changed to use gcp images instead of dockerhub images.)

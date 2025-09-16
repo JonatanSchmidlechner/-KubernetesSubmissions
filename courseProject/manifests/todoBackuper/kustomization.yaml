@@ -3,4 +3,10 @@ kind: Kustomization
 resources:
   - ./backup-cronjob.yaml
 images:
+<<<<<<< HEAD
   - name: todo-backuper
+=======
+  - name: todoBackuper
+    newName: jongcp/todo-backuper
+    newTag: "1.0"
+>>>>>>> 652cb7b (Changed to use gcp images instead of dockerhub images.)
