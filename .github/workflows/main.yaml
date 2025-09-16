@@ -112,10 +112,11 @@ jobs:
 
       - name: Delete namespace
         run: |
-          if [ "${GITHUB_REF_NAME}" = "main" ]; then
+          DELETED_BRANCH=${GITHUB_REF#refs/heads/}
+          if [ "$DELETED_BRANCH" = "main" ]; then
             echo "Deleting namespace project"
             kubectl delete namespace project
           else
-            echo "Deleting namespace ${GITHUB_REF_NAME}"
-            kubectl delete namespace ${GITHUB_REF_NAME} --ignore-not-found
+            echo "Deleting namespace $DELETED_BRANCH"
+            kubectl delete namespace $DELETED_BRANCH --ignore-not-found
           fi
