@@ -33,9 +33,9 @@ const createBackup = () => {
         console.error(`pg_dump stderr: ${stderr}`);
       }
       console.log(`Backup saved to ${backupFilePath}`);
+      uploadFile().catch(console.error);
     }
   );
 };
 
 createBackup();
-uploadFile().catch(console.error);
