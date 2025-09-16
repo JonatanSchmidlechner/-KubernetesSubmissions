@@ -7,4 +7,3 @@ resources:
   - ./todo-backend-service.yaml
 images:
   - name: todo-backend
-    newName: jongcp/todo-backend

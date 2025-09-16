@@ -4,4 +4,3 @@ resources:
   - ./fetchRandomArticleCronjob.yaml
 images:
   - name: todo-generator
-    newName: jongcp/todo-generator
