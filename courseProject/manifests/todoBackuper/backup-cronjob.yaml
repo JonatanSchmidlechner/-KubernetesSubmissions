@@ -14,6 +14,21 @@ spec:
               image: todo-backuper
               imagePullPolicy: IfNotPresent
               env:
+                - name: POSTGRES_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres-secret
+                      key: postgres_password
+                - name: POSTGRES_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      name: postgres-config
+                      key: postgres_host
+                - name: POSTGRES_PORT
+                  valueFrom:
+                    configMapKeyRef:
+                      name: postgres-config
+                      key: postgres_port
                 - name: POSTGRES_USER
                   valueFrom:
                     configMapKeyRef:

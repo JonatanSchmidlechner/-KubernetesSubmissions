@@ -3,6 +3,8 @@ import { Storage } from '@google-cloud/storage';
 
 const dbUser = process.env.POSTGRES_USER;
 const dbName = process.env.POSTGRES_DB;
+const dbHost = process.env.POSTGRES_HOST;
+const dbPort = process.env.POSTGRES_PORT;
 const bucketName = process.env.BUCKET_NAME;
 
 const backupFileName = `backup-${new Date().toISOString().slice(0, 10)}.sql`;
@@ -21,7 +23,7 @@ async function uploadFile() {
 
 const createBackup = () => {
   exec(
-    `pg_dump -U ${dbUser} -d ${dbName} -f ${backupFilePath}`,
+    `pg_dump -h ${dbHost} -p ${dbPort} -U ${dbUser} -d ${dbName} -f ${backupFilePath}`,
     (error, stdout, stderr) => {
       if (error) {
         console.error(`Error during pg_dump: ${error.message}`);
