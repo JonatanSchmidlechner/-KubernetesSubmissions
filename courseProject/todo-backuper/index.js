@@ -6,8 +6,8 @@ const dbName = process.env.POSTGRES_DB;
 const dbHost = process.env.POSTGRES_HOST;
 const dbPort = process.env.POSTGRES_PORT;
 const bucketName = process.env.BUCKET_NAME;
-
-const backupFileName = `backup-${new Date().toISOString().slice(0, 10)}.sql`;
+const dbPassword = process.env.POSTGRES_PASSWORD;
+process.env.PGPASSWORD = dbPassword;
 const backupFilePath = `/tmp/${backupFileName}`;
 
 const storage = new Storage();
