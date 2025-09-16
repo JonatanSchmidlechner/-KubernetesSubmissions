@@ -6,10 +6,4 @@ resources:
   - ./todoapp-service.yaml
   - ./route.yaml
 images:
-<<<<<<< HEAD
   - name: todo-app
-=======
-  - name: todoApp
-    newName: jongcp/todoapp
-    newTag: "1.91"
->>>>>>> 652cb7b (Changed to use gcp images instead of dockerhub images.)
