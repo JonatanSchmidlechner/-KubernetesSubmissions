@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - ./fetchRandomArticleCronjob.yaml
 images:
-  - name: todoGenerator
+  - name: todo-generator
     newName: jongcp/todo-generator
     newTag: "1.1"

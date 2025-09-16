@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - ./backup-cronjob.yaml
 images:
-  - name: todoBackuper
+  - name: todo-backuper
     newName: jongcp/todo-backuper
     newTag: "1.0"

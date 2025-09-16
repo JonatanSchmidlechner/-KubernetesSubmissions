@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
             - name: todo-backuper
-              image: todoBackuper
+              image: todo-backuper
               imagePullPolicy: IfNotPresent
               env:
                 - name: POSTGRES_USER

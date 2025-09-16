@@ -21,7 +21,7 @@ spec:
             claimName: todoapp-pvc
       containers:
         - name: todoapp
-          image: todoApp
+          image: todo-app
           imagePullPolicy: Always
           env:
             - name: PORT
