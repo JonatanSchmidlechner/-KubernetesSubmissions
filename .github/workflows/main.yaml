@@ -92,7 +92,7 @@ jobs:
           kubectl get services -o wide
 
   delete:
-    if: github.event_name == 'delete'
+    if: github.event_name == 'delete' && github.event.ref_type == 'branch'
     runs-on: ubuntu-latest
     environment: dwk
     steps:
@@ -112,7 +112,7 @@ jobs:
 
       - name: Delete namespace
         run: |
-          DELETED_BRANCH=${GITHUB_REF#refs/heads/}
+          DELETED_BRANCH=${{ github.event.ref }}
           if [ "$DELETED_BRANCH" = "main" ]; then
             echo "Deleting namespace project"
             kubectl delete namespace project
