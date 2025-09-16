@@ -5,4 +5,3 @@ resources:
 images:
   - name: todo-generator
     newName: jongcp/todo-generator
-    newTag: "1.1"

@@ -8,4 +8,3 @@ resources:
 images:
   - name: todo-app
     newName: jongcp/todoapp
-    newTag: "1.91"

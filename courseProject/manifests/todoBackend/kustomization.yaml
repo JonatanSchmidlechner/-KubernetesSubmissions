@@ -8,4 +8,3 @@ resources:
 images:
   - name: todo-backend
     newName: jongcp/todo-backend
-    newTag: "1.21"
