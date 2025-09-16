@@ -13,6 +13,12 @@
 kubectl create secret generic gcp-credentials   --from-file=gcp-key.json=./private-key.json  -n project
 ```
 
+- gcp-credentials added to the cluster. This can be done with the command below:
+
+```powershell
+kubectl create secret generic gcp-credentials \  --from-file=gcp-key.json=./gcp-key.json
+```
+
 1. Clone the repository at a tagged release:
 
 ```powershell
