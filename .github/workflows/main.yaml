@@ -64,12 +64,17 @@ jobs:
       - name: Deploy
         run: |
           cd courseProject
+
+          kubectl create namespace ${GITHUB_REF#refs/heads/} || true
+          kubectl config set-context --current --namespace=${GITHUB_REF#refs/heads/}
+          kustomize edit set namespace ${GITHUB_REF#refs/heads/}
+
           for app in todo-app todo-backend todo-generator; do
             IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$app:$BRANCH-$GITHUB_SHA
             kustomize edit set image $app=$IMAGE_TAG
           done
           kustomize build . | kubectl apply -f -
           for app in todo-app todo-backend; do
-            kubectl rollout status deployment $app -n project
+            kubectl rollout status deployment $app
           done
           kubectl get services -o wide
