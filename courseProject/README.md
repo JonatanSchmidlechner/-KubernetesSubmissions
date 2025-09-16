@@ -8,6 +8,7 @@
 - `kubectl` CLI installed and configured to point to your cluster.
 - `gcloud` CLI installed and authenticated (if needed for cluster management).
 <<<<<<< HEAD
+<<<<<<< HEAD
 - For the app to be able to create backups, a Kubernetes Secret containing a Google Cloud service account key needs to be added to the cluster in project namespace. This service account should have **Storage Admin** permissions for Google Cloud Storage.
 
 ```powershell
@@ -22,6 +23,9 @@ kubectl create secret generic gcp-credentials \  --from-file=gcp-key.json=./gcp-
 =======
 - For the app to be able to create backups, a Kubernetes Secret containing a Google Cloud service account key needs to be added to the cluster. This service account should have **Storage Admin** permissions for Google Cloud Storage.
 >>>>>>> 2b6f05b (Test todo-backuper)
+=======
+- For the app to be able to create backups, a Kubernetes Secret containing a Google Cloud service account key needs to be added to the cluster in project namespace. This service account should have **Storage Admin** permissions for Google Cloud Storage.
+>>>>>>> b442b5e (Test todo-backuper)
 
 1. Clone the repository at a tagged release:
 
