@@ -40,6 +40,7 @@ kubectl get gateway -n project todoapp-gateway --watch
 5. Then open the app in browser using the URL below. This will take a moment to deploy, responses may be 404 and 502 as it becomes available:
 
 - `http://<EXTERNAL-IP>/`
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 ## Comparison between DBAAS vs DYI
@@ -75,3 +76,5 @@ kubectl get gateway -n project todoapp-gateway --watch
 =======
 test
 >>>>>>> 8f74845 (Test github actions.)
+=======
+>>>>>>> 4689850 (Update readme for this task.)
