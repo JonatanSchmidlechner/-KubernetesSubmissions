@@ -40,9 +40,6 @@ kubectl get gateway -n project todoapp-gateway --watch
 5. Then open the app in browser using the URL below. This will take a moment to deploy, responses may be 404 and 502 as it becomes available:
 
 - `http://<EXTERNAL-IP>/`
-<<<<<<< HEAD
-
-<<<<<<< HEAD
 ## Comparison between DBAAS vs DYI
 
 ### DBAAS
@@ -73,8 +70,3 @@ kubectl get gateway -n project todoapp-gateway --watch
 - Cost is probably more unpredictable, since the cost now comes from multiple seperate resources (which together form the database) being run instead of a single database service.
 - More work to setup and maintain.
 - No ready made services. You need to handle backups etc.
-=======
-test
->>>>>>> 8f74845 (Test github actions.)
-=======
->>>>>>> 4689850 (Update readme for this task.)
