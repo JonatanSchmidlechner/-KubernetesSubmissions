@@ -37,8 +37,6 @@ kubectl get gateway -n project todoapp-gateway --watch
 
 - `http://<EXTERNAL-IP>/`
 
-test
-
 ## Comparison between DBAAS vs DYI
 
 ### DBAAS
