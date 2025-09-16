@@ -7,25 +7,11 @@
 - A running GKE cluster.
 - `kubectl` CLI installed and configured to point to your cluster.
 - `gcloud` CLI installed and authenticated (if needed for cluster management).
-<<<<<<< HEAD
-<<<<<<< HEAD
 - For the app to be able to create backups, a Kubernetes Secret containing a Google Cloud service account key needs to be added to the cluster in project namespace. This service account should have **Storage Admin** permissions for Google Cloud Storage.
 
 ```powershell
 kubectl create secret generic gcp-credentials   --from-file=gcp-key.json=./private-key.json  -n project
 ```
-
-- gcp-credentials added to the cluster. This can be done with the command below:
-
-```powershell
-kubectl create secret generic gcp-credentials \  --from-file=gcp-key.json=./gcp-key.json
-```
-=======
-- For the app to be able to create backups, a Kubernetes Secret containing a Google Cloud service account key needs to be added to the cluster. This service account should have **Storage Admin** permissions for Google Cloud Storage.
->>>>>>> 2b6f05b (Test todo-backuper)
-=======
-- For the app to be able to create backups, a Kubernetes Secret containing a Google Cloud service account key needs to be added to the cluster in project namespace. This service account should have **Storage Admin** permissions for Google Cloud Storage.
->>>>>>> b442b5e (Test todo-backuper)
 
 1. Clone the repository at a tagged release:
 
@@ -54,6 +40,7 @@ kubectl get gateway -n project todoapp-gateway --watch
 5. Then open the app in browser using the URL below. This will take a moment to deploy, responses may be 404 and 502 as it becomes available:
 
 - `http://<EXTERNAL-IP>/`
+
 ## Comparison between DBAAS vs DYI
 
 ### DBAAS
