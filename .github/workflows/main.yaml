@@ -17,6 +17,7 @@ env:
 
 jobs:
   build-publish-deploy:
+    if: github.event_name == 'push'
     name: Build, Publish and Deploy
     runs-on: ubuntu-latest
     environment: dwk
@@ -86,3 +87,31 @@ jobs:
             kubectl rollout status deployment $app
           done
           kubectl get services -o wide
+
+  delete:
+    if: github.event_name == 'delete'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: "${{ secrets.GKE_SA_KEY }}"
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Get GKE credentials
+        uses: google-github-actions/get-gke-credentials@v2
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          project_id: ${{ env.PROJECT_ID }}
+          location: ${{ env.GKE_ZONE }}
+
+      - name: Delete namespace
+        run: |
+          if [ "${GITHUB_REF_NAME}" = "main" ]; then
+            echo "Deleting namespace project"
+            kubectl delete namespace project
+          else
+            echo "Deleting namespace ${GITHUB_REF_NAME}"
+            kubectl delete namespace ${GITHUB_REF_NAME} --ignore-not-found
+          fi
