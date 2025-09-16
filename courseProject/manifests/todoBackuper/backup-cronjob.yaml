@@ -4,7 +4,7 @@ metadata:
   name: todo-backuper
   namespace: project
 spec:
-  schedule: "56 * * * *"
+  schedule: "59 * * * *"
   jobTemplate:
     spec:
       template:

@@ -7,7 +7,7 @@
 - A running GKE cluster.
 - `kubectl` CLI installed and configured to point to your cluster.
 - `gcloud` CLI installed and authenticated (if needed for cluster management).
-- For the app to be able to create backups, a Kubernetes Secret containing a Google Cloud service account key needs to be added to the cluster. This service account should have **Storage Admin** permissions for Google Cloud Storage.
+- For the app to be able to create backups, a Kubernetes Secret containing a Google Cloud service account key needs to be added to the cluster in project namespace. This service account should have **Storage Admin** permissions for Google Cloud Storage.
 
 1. Clone the repository at a tagged release:
 
