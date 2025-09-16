@@ -5,3 +5,4 @@ resources:
   - manifests/todoBackend
   - manifests/todoGenerator
   - manifests/todoApp
+  - manifests/todoBackuper

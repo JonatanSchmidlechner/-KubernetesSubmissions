@@ -8,10 +8,16 @@
 - `kubectl` CLI installed and configured to point to your cluster.
 - `gcloud` CLI installed and authenticated (if needed for cluster management).
 
+- gcp-credentials added to the cluster. This can be done with the command below:
+
+```powershell
+kubectl create secret generic gcp-credentials \  --from-file=gcp-key.json=./gcp-key.json
+```
+
 1. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 3.8 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 3.10 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
 2. Change directory to the project directory:
@@ -36,31 +42,33 @@ kubectl get gateway -n project todoapp-gateway --watch
 
 - `http://<EXTERNAL-IP>/`
 
-
 ## Comparison between DBAAS vs DYI
 
 ### DBAAS
 
 #### Pros
+
 - Less work for initial setup.
 - Less (none) responsibility for maintenance.
 - There are potentially useful ready made services like automated backups.
 - Cost is probably predictable.
 - Overall, easier to setup and use, since the provider has probably seen a lot of effort to make everything as easy as possible for the customer.
-  
+
 #### Cons
+
 - Less freedom to customize the database to match your own needs perfectly. In other words, less flexible.
 - Cost may be higher.
-
 
 ### DYI
 
 #### Pros
+
 - More flexible. You can configure it however you want to match your needs.
 - More control on everything.
 - Cost may be lower.
 
 #### Cons
+
 - Cost is probably more unpredictable, since the cost now comes from multiple seperate resources (which together form the database) being run instead of a single database service.
 - More work to setup and maintain.
 - No ready made services. You need to handle backups etc.

@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: todo-backuper
+  namespace: project
+spec:
+  schedule: "44 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: todo-backuper
+              image: todoBackuper
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: POSTGRES_USER
+                  valueFrom:
+                    configMapKeyRef:
+                      name: postgres-config
+                      key: postgres_user
+                - name: POSTGRES_DB
+                  valueFrom:
+                    configMapKeyRef:
+                      name: postgres-config
+                      key: postgres_db
+                - name: BUCKET_NAME
+                  value: dwk-backups123
+                - name: GOOGLE_APPLICATION_CREDENTIALS
+                  value: /secrets/gcp-key.json
+              volumeMounts:
+                - name: gcp-credentials
+                  mountPath: /secrets
+                  readOnly: true
+          volumes:
+            - name: gcp-credentials
+              secret:
+                secretName: gcp-credentials
+          restartPolicy: OnFailure
