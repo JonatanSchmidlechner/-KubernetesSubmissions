@@ -94,6 +94,7 @@ jobs:
   delete:
     if: github.event_name == 'delete'
     runs-on: ubuntu-latest
+    environment: dwk
     steps:
       - uses: google-github-actions/auth@v2
         with:
