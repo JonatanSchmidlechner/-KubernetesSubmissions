@@ -14,11 +14,11 @@ spec:
               image: todo-backuper
               resources:
                 requests:
-                  memory: "128Mi"
-                  cpu: "250m"
+                  memory: "50Mi"
+                  cpu: "125m"
                 limits:
-                  memory: "512Mi"
-                  cpu: "500m"
+                  memory: "250Mi"
+                  cpu: "250m"
               imagePullPolicy: IfNotPresent
               env:
                 - name: POSTGRES_PASSWORD
