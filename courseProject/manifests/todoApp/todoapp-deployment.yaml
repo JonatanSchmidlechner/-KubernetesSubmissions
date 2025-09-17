@@ -23,6 +23,13 @@ spec:
         - name: todoapp
           image: todo-app
           imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
           env:
             - name: PORT
               value: "5000"

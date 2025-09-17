@@ -13,6 +13,13 @@ spec:
             - name: todo-generator
               image: todo-generator
               imagePullPolicy: IfNotPresent
+              resources:
+                requests:
+                  memory: "128Mi"
+                  cpu: "250m"
+                limits:
+                  memory: "512Mi"
+                  cpu: "500m"
               env:
                 - name: TODO_BACKEND_URL
                   valueFrom:

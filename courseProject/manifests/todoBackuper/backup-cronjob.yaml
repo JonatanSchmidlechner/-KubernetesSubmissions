@@ -12,6 +12,13 @@ spec:
           containers:
             - name: todo-backuper
               image: todo-backuper
+              resources:
+                requests:
+                  memory: "128Mi"
+                  cpu: "250m"
+                limits:
+                  memory: "512Mi"
+                  cpu: "500m"
               imagePullPolicy: IfNotPresent
               env:
                 - name: POSTGRES_PASSWORD
