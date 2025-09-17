@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: todo-backend
-          image: todoBackend
+          image: todo-backend
           env:
             - name: PORT
               value: "5002"
