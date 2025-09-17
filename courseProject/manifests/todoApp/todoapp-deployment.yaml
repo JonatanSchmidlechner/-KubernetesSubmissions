@@ -26,10 +26,10 @@ spec:
           resources:
             requests:
               memory: "50Mi"
-              cpu: "125m"
+              cpu: "10m"
             limits:
               memory: "250Mi"
-              cpu: "250m"
+              cpu: "50m"
           env:
             - name: PORT
               value: "5000"

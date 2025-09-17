@@ -16,10 +16,10 @@ spec:
               resources:
                 requests:
                   memory: "50Mi"
-                  cpu: "125m"
+                  cpu: "10m"
                 limits:
                   memory: "250Mi"
-                  cpu: "250m"
+                  cpu: "50m"
               env:
                 - name: TODO_BACKEND_URL
                   valueFrom:
