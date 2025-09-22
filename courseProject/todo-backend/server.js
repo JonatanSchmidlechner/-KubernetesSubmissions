@@ -6,7 +6,7 @@ app.use(express.json());
 
 app.get('/todos', async (req, res) => {
   try {
-    const result = await pool.query(`SELECT todo FROM todos`);
+    const result = await pool.query(`SELECT * FROM todos`);
     const todos = result.rows;
     res.json({ todos: todos });
   } catch (error) {
