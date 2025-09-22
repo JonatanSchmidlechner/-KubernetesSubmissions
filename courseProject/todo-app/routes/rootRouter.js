@@ -23,7 +23,7 @@ rootRouter.get('/', async (req, res) => {
 
 rootRouter.post('/todos', async (req, res) => {
   const data = req.body;
-  console.log(data);
+  console.log('data in post /todos', data);
   try {
     const response = await fetch(`${todoBackendBaseURL}/todos`, {
       method: 'POST',
@@ -45,7 +45,7 @@ rootRouter.post('/todos', async (req, res) => {
 
 rootRouter.put('/todos/:id', async (req, res) => {
   const todoId = req.params.id;
-  const doneValue = req.body.done;
+  const doneValue = req.body.done === 'true';
   console.log('id: ', todoId);
   console.log('doneValue: ', doneValue);
   try {
@@ -56,8 +56,8 @@ rootRouter.put('/todos/:id', async (req, res) => {
     });
     if (!result.ok) {
       res
-        .status(response.status)
-        .send(response.message || 'Failed to mark todo as done');
+        .status(result.status)
+        .send(result.message || 'Failed to mark todo as done');
     }
 
     res.redirect('/');
