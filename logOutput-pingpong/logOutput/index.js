@@ -15,7 +15,7 @@ app.get('/', async (req, res) => {
     pings = data.pings;
   } catch (error) {
     console.log(error);
-    pings = 'Error: Could not retrieve pings.';
+    return res.status(500).json({ message: 'Could not fetch pings' });
   }
   let fileContent = '';
   try {

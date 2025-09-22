@@ -20,6 +20,12 @@ spec:
       containers:
         - name: logoutput
           image: LOGOUTPUT/IMAGE
+          readinessProbe:
+            initialDelaySeconds: 10 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+              path: /
+              port: 5000
           env:
             - name: PORT
               value: "5000"

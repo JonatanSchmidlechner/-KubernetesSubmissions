@@ -45,10 +45,9 @@ spec:
         name: postgres-data-storage
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: standard
         resources:
           requests:
-            storage: 1Gi
+            storage: 100Mi
 
 ---
 apiVersion: v1

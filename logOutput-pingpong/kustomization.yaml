@@ -6,6 +6,6 @@ resources:
   - manifests/pingpong
 images:
   - name: PINGPONG/IMAGE
-    newName: jonschm/pingpong:1.6
+    newName: jonschm/pingpong:1.71
   - name: LOGOUTPUT/IMAGE
-    newName: jonschm/log_output:1.6
+    newName: jonschm/log_output:1.7

@@ -11,7 +11,7 @@
 1. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 3.4 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 4.1 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
 2. Change directory to the project directory:
@@ -23,7 +23,7 @@ cd .\-KubernetesSubmissions\logOutput-pingpong/
 3. Apply manifest files:
 
 ```powershell
-kubectl apply -f manifests/ --recursive
+kubectl apply -k .
 ```
 
 4. Wait for the app to deploy and check the address.
