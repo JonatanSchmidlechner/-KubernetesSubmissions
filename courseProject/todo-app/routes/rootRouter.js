@@ -50,7 +50,7 @@ rootRouter.put('/todos/:id', async (req, res) => {
     const result = await fetch(`${todoBackendBaseURL}/todos/${todoId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ done: doneValue }),,
+      body: JSON.stringify({ done: doneValue }),
     });
     if (!result.ok) {
       res
