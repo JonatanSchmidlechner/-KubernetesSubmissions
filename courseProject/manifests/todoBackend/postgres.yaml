@@ -22,7 +22,7 @@ spec:
               memory: "50Mi"
               cpu: "10m"
             limits:
-              memory: "1Gi"
+              memory: "500Mi"
               cpu: "50m"
           ports:
             - name: web
