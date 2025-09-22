@@ -47,8 +47,12 @@ app.post('/todos', async (req, res) => {
 });
 
 app.put('/todos/:id', async (req, res) => {
-  const todoId = parseInt(req.params.id, 10);
+  const todoId = req.params.id;
+  console.log('todoId: ', todoId);
+  const intTodoId = parseInt(todoId, 10);
+  console.log('Integer todoId: ', intTodoId);
   const doneValue = req.body.done;
+  console.log('done value: ', doneValue);
   if (isNaN(todoId)) {
     return res.status(400).json({ message: 'Invalid todo id' });
   }

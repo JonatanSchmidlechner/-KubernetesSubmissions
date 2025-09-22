@@ -31,7 +31,7 @@ rootRouter.post('/todos', async (req, res) => {
       body: JSON.stringify(data),
     });
     if (!response.ok) {
-      res
+      return res
         .status(response.status)
         .send(response.message || 'Failed to create todo');
     }
@@ -46,6 +46,8 @@ rootRouter.post('/todos', async (req, res) => {
 rootRouter.put('/todos/:id', async (req, res) => {
   const todoId = req.params.id;
   const doneValue = req.body.done;
+  console.log('id: ', todoId);
+  console.log('doneValue: ', doneValue);
   try {
     const result = await fetch(`${todoBackendBaseURL}/todos/${todoId}`, {
       method: 'PUT',
