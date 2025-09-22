@@ -1,0 +1,1 @@
+sum(kube_pod_owner{namespace="prometheus", owner_kind="StatefulSet"})
