@@ -40,4 +40,12 @@ rootRouter.post('/todos', async (req, res) => {
   }
 });
 
+rootRouter.get('/healthz', async (req, res) => {
+  try {
+    const response = await fetch(`${todoBackendBaseURL}/todos`);
+    res.status(200).send();
+  } catch (error) {
+    res.status(500).json({ message: 'Could not fetch todos' });
+  }
+});
 export default rootRouter;

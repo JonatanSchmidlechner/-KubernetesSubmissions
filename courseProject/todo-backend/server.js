@@ -48,6 +48,15 @@ app.post('/todos', async (req, res) => {
   }
 });
 
+app.get('/healthz', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT 1');
+    return res.status(200).send();
+  } catch (error) {
+    return res.status(500).json({ message: 'Could not connect to database.' });
+  }
+});
+
 app.listen(port, async () => {
   console.log(`Server started on port ${port}`);
 });

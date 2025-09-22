@@ -18,6 +18,18 @@ export const pool = new Pool({
   database: databaseName,
 });
 
-await pool.query(`CREATE TABLE IF NOT EXISTS todos (
-    id SERIAL PRIMARY KEY,
-    todo TEXT )`);
+const initDB = async () => {
+  while (true) {
+    try {
+      await pool.query(`CREATE TABLE IF NOT EXISTS todos (
+        id SERIAL PRIMARY KEY,
+        todo TEXT )`);
+      break; // success
+    } catch (err) {
+      console.log('DB not ready, retrying in 5s...');
+      await new Promise((r) => setTimeout(r, 5000));
+    }
+  }
+};
+
+initDB();
