@@ -44,4 +44,4 @@
 - [3.9.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/tree/3.9/courseProject)
 - [3.10.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/tree/3.10/courseProject)
 - [3.11.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/tree/3.11/courseProject)
-- [3.12.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/blob/3.12/courseProject/pictures/logs_screenshot.PNG)
+- [3.12.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/blob/3.12/courseProject/pictures/logs_screenshot.PNG) Could not submit this in MOOC page.
