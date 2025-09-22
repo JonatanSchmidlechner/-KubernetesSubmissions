@@ -17,4 +17,4 @@ metadata:
   namespace: project
 type: Opaque
 stringData:
-  postgres_password: myrandompasswordbug
+  postgres_password: myrandompassword
