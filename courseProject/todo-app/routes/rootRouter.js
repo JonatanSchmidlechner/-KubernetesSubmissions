@@ -6,6 +6,11 @@ const rootRouter = express.Router();
 const todoBackendBaseURL =
   process.env.TODO_BACKEND_URL || 'http://localhost:3002';
 
+rootRouter.use((req, res, next) => {
+  console.log('METHOD:', req.method, 'URL:', req.url);
+  next();
+});
+
 rootRouter.get('/', async (req, res) => {
   await handleImageState();
   const response = await fetch(`${todoBackendBaseURL}/todos`);
