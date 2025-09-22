@@ -16,7 +16,7 @@ kubectl create secret generic gcp-credentials   --from-file=gcp-key.json=./priva
 1. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 4.2--depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 4.3--depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
 2. Change directory to the project directory:
