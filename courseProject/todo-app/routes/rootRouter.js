@@ -13,9 +13,6 @@ rootRouter.get('/', async (req, res) => {
   const todos = data.todos;
   const doneTodos = todos.filter((todo) => todo.done);
   const undoneTodos = todos.filter((todo) => !todo.done);
-  todos.forEach((todo) => {
-    console.log(todo);
-  });
 
   res.status(200).render('index', {
     filePath: '/images/image.png',
@@ -26,7 +23,6 @@ rootRouter.get('/', async (req, res) => {
 
 rootRouter.post('/todos', async (req, res) => {
   const data = req.body;
-  console.log('data in post /todos', data);
   try {
     const response = await fetch(`${todoBackendBaseURL}/todos`, {
       method: 'POST',
@@ -49,8 +45,7 @@ rootRouter.post('/todos', async (req, res) => {
 rootRouter.put('/todos/:id', async (req, res) => {
   const todoId = req.params.id;
   const doneValue = req.body.done === 'true';
-  console.log('id: ', todoId);
-  console.log('doneValue: ', doneValue);
+
   try {
     const result = await fetch(`${todoBackendBaseURL}/todos/${todoId}`, {
       method: 'PUT',
