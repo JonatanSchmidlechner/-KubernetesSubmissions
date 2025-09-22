@@ -11,10 +11,13 @@ rootRouter.get('/', async (req, res) => {
   const response = await fetch(`${todoBackendBaseURL}/todos`);
   const data = await response.json();
   const todos = data.todos;
+  const doneTodos = todos.filter((todo) => todo.done);
+  const undoneTodos = todos.filter((todo) => !todo.done);
 
   res.status(200).render('index', {
     filePath: '/images/image.png',
-    todos: todos,
+    todos: undoneTodos,
+    doneTodos: doneTodos,
   });
 });
 
@@ -37,6 +40,28 @@ rootRouter.post('/todos', async (req, res) => {
   } catch (error) {
     console.log('Internal server error', error);
     res.status(500).send('Internal server error');
+  }
+});
+
+rootRouter.put('/todos/:id', async (req, res) => {
+  const todoId = req.params.id;
+  const doneValue = req.body.done;
+  try {
+    const result = await fetch(`${todoBackendBaseURL}/todos/${todoId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ done: doneValue }),,
+    });
+    if (!result.ok) {
+      res
+        .status(response.status)
+        .send(response.message || 'Failed to mark todo as done');
+    }
+
+    res.redirect('/');
+  } catch (error) {
+    console.log(error);
+    res.status(error).json({ message: 'Could not mark todo as done' });
   }
 });
 

@@ -3,10 +3,12 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import rootRouter from './routes/index.js';
 import { ensureImageDir, ensureImageExists } from './services/imageManager.js';
+import methodOverride from 'method-override';
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 const port = process.env.PORT || 3000;
 

@@ -13,9 +13,23 @@
         <input type="submit"  value="Create todo">
       </div>
     </form>
+    <h2>Todo</h2>
     <ul>
-      <% todos.forEach(todo => { %>
-        <li><%= todo %></li>
+      <div style="display: flex">
+        <% todos.forEach(todo => { %>
+          <li><%= todo.todo %></li>
+          <form action="/todos/<%= todo.id %>" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="done" value="<%= !todo.done %>">
+            <button type="submit">Mark as Done</button>
+          </form>
+          <% }) %>
+        </div>
+    </ul>
+    <h2>Done</h2>
+    <ul>
+      <% doneTodos.forEach(doneTodo => { %>
+        <li><%= doneTodo.todo %></li>
         <% }) %>
     </ul>
     <p>DevOps with Kubernetes 2025</p>

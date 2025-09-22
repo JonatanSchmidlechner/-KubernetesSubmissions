@@ -23,7 +23,8 @@ const initDB = async () => {
     try {
       await pool.query(`CREATE TABLE IF NOT EXISTS todos (
         id SERIAL PRIMARY KEY,
-        todo TEXT )`);
+        todo TEXT,
+        done BOOLEAN DEFAULT FALSE )`);
       break; // success
     } catch (err) {
       console.log('DB not ready, retrying in 5s...');

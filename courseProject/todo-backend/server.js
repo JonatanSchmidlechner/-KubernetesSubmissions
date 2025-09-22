@@ -7,9 +7,7 @@ app.use(express.json());
 app.get('/todos', async (req, res) => {
   try {
     const result = await pool.query(`SELECT todo FROM todos`);
-    const todos = result.rows.map((row) => {
-      return row.todo;
-    });
+    const todos = result.rows;
     res.json({ todos: todos });
   } catch (error) {
     console.log(error);
@@ -45,6 +43,29 @@ app.post('/todos', async (req, res) => {
     res.status(400).json({
       message: 'Internal server error.',
     });
+  }
+});
+
+app.put('/todos/:id', async (req, res) => {
+  const todoId = parseInt(req.params.id, 10);
+  const doneValue = req.body.done;
+  if (isNaN(todoId)) {
+    return res.status(400).json({ message: 'Invalid todo id' });
+  }
+  try {
+    const result = await pool.query(
+      'UPDATE todos SET done = $1 WHERE id = $2 RETURNING *',
+      [doneValue, todoId]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: 'Todo not found' });
+    }
+
+    res.status(200).json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Database update failed' });
   }
 });
 
