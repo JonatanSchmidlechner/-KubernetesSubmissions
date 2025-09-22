@@ -18,10 +18,9 @@
       <% todos.forEach(todo => { %>
         <li style="display: flex; align-items: center;">
           <span><%= todo.todo %></span>
-          <form action="/todos/<%= todo.id %>" method="POST" style="margin-left: 10px;">
-            <input type="hidden" name="_method" value="PUT">
-            <input type="hidden" name="done" value="<%= !todo.done %>">
+          <form action="/todos/<%= todo.id %>?_method=PUT" method="POST">
             <button type="submit">Mark as Done</button>
+            <input type="hidden" name="done" value="<%= !todo.done %>">
           </form>
         </li>
       <% }) %>
