@@ -16,15 +16,15 @@
     <h2>Todo</h2>
     <ul>
       <% todos.forEach(todo => { %>
-        <div style="display: flex">
-          <li><%= todo.todo %></li>
-          <form action="/todos/<%= todo.id %>" method="POST">
+        <li style="display: flex; align-items: center;">
+          <span><%= todo.todo %></span>
+          <form action="/todos/<%= todo.id %>" method="POST" style="margin-left: 10px;">
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="done" value="<%= !todo.done %>">
             <button type="submit">Mark as Done</button>
           </form>
-          <% }) %>
-        </div>
+        </li>
+      <% }) %>
     </ul>
     <h2>Done</h2>
     <ul>
