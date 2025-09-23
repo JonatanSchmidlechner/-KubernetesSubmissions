@@ -4,4 +4,4 @@ resources:
   - ./backup-cronjob.yaml
 images:
   - name: todo-backuper
-    newName: jonschm/todo-generator:test1
+    newName: jonschm/todo-backuper:test1

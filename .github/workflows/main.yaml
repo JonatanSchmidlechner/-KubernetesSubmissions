@@ -14,8 +14,6 @@ env:
   GKE_ZONE: europe-north1-b
   REGISTRY: europe-north1-docker.pkg.dev
   REPOSITORY: jongcp
-  IMAGE: dwk-environments
-  SERVICE: dwk-environments
   BRANCH: ${{ github.ref_name }}
 
 jobs:
@@ -48,9 +46,6 @@ jobs:
           cluster_name: "${{ env.GKE_CLUSTER }}"
           project_id: "${{ env.PROJECT_ID }}"
           location: "${{ env.GKE_ZONE }}"
-
-      - name: "Form the image name"
-        run: echo "IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$IMAGE:$BRANCH-$GITHUB_SHA" >> $GITHUB_ENV
 
       - name: Build and push all apps
         run: |
