@@ -8,10 +8,10 @@ resources:
   - manifests/todoBackuper
 images:
   - name: todo-app
-    newName: jonschm/todoapp:3.11
+    newName: jonschm/todoapp:4.2
   - name: todo-backend
-    newName: jonschm/todo-backend:3.11
+    newName: jonschm/todo-backend:4.2
   - name: todo-generator
-    newName: jonschm/todo-generator:3.11
+    newName: jonschm/todo-generator:4.2
   - name: todo-backuper
-    newName: jonschm/todo-backuper:3.11
+    newName: jonschm/todo-backuper:4.2
