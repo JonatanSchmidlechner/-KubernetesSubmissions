@@ -5,6 +5,3 @@ resources:
   - ./todoapp-deployment.yaml
   - ./todoapp-service.yaml
   - ./route.yaml
-images:
-  - name: todo-app
-    newName: jonschm/todoapp:test1
