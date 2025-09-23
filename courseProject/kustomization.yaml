@@ -6,3 +6,12 @@ resources:
   - manifests/todoGenerator
   - manifests/todoApp
   - manifests/todoBackuper
+images:
+  - name: todo-app
+    newName: jonschm/todoapp:3.11
+  - name: todo-backend
+    newName: jonschm/todo-backend:3.11
+  - name: todo-generator
+    newName: jonschm/todo-generator:3.11
+  - name: todo-backuper
+    newName: jonschm/todo-backuper:3.11
