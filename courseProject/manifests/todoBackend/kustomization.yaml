@@ -5,6 +5,3 @@ resources:
   - ./postgres.yaml
   - ./todo-backend-deployment.yaml
   - ./todo-backend-service.yaml
-images:
-  - name: todo-backend
-    newName: jonschm/todo-backend:test1
