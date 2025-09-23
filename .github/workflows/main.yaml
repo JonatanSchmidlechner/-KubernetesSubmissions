@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - "courseProject/**"
+  delete:
+    branches:
+      - "*"
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
@@ -11,12 +14,11 @@ env:
   GKE_ZONE: europe-north1-b
   REGISTRY: europe-north1-docker.pkg.dev
   REPOSITORY: jongcp
-  IMAGE: dwk-environments
-  SERVICE: dwk-environments
   BRANCH: ${{ github.ref_name }}
 
 jobs:
   build-publish-deploy:
+    if: github.event_name == 'push'
     name: Build, Publish and Deploy
     runs-on: ubuntu-latest
     environment: dwk
@@ -45,13 +47,10 @@ jobs:
           project_id: "${{ env.PROJECT_ID }}"
           location: "${{ env.GKE_ZONE }}"
 
-      - name: "Form the image name"
-        run: echo "IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$IMAGE:$BRANCH-$GITHUB_SHA" >> $GITHUB_ENV
-
       - name: Build and push all apps
         run: |
           cd courseProject
-          for app in todo-app todo-backend todo-generator; do
+          for app in todo-app todo-backend todo-generator todo-backuper; do
             IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$app:$BRANCH-$GITHUB_SHA
             echo "Building $app -> $IMAGE_TAG"
             docker build -t $IMAGE_TAG $app
@@ -77,7 +76,7 @@ jobs:
           kubectl config set-context --current --namespace=$NAMESPACE
           kustomize edit set namespace $NAMESPACE
 
-          for app in todo-app todo-backend todo-generator; do
+          for app in todo-app todo-backend todo-generator todo-backuper; do
             IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$app:$BRANCH-$GITHUB_SHA
             kustomize edit set image $app=$IMAGE_TAG
           done
@@ -86,3 +85,33 @@ jobs:
             kubectl rollout status deployment $app
           done
           kubectl get services -o wide
+
+  delete:
+    if: github.event_name == 'delete' && github.event.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    environment: dwk
+    steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: "${{ secrets.GKE_SA_KEY }}"
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Get GKE credentials
+        uses: google-github-actions/get-gke-credentials@v2
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          project_id: ${{ env.PROJECT_ID }}
+          location: ${{ env.GKE_ZONE }}
+
+      - name: Delete namespace
+        run: |
+          DELETED_BRANCH=${{ github.event.ref }}
+          if [ "$DELETED_BRANCH" = "main" ]; then
+            echo "Deleting namespace project"
+            kubectl delete namespace project
+          else
+            echo "Deleting namespace $DELETED_BRANCH"
+            kubectl delete namespace $DELETED_BRANCH --ignore-not-found
+          fi
