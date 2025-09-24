@@ -15,21 +15,21 @@ const initNats = async () => {
   }
 };
 
-const startSubscriber = async () => {
+const startSubscriber = async (conn) => {
   const sub = conn.subscribe('alerts');
   const jc = JSONCodec();
   for await (const msg of sub) {
     const data = jc.decode(msg.data);
-    console.log(`[${sub.getProcessed()}]: ${jc.decode(data)}`);
+    console.log(`[${sub.getProcessed()}]: ${data}`);
     const res = await fetch(process.env.DISCORD_WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        content: `A todo was ${data.type}: ${data.type.todo}`,
+        content: `A todo was ${data.type}: ${JSON.stringify(data.todo)}`,
       }),
     });
   }
 };
 
 const conn = await initNats();
-startSubscriber();
+startSubscriber(conn);
