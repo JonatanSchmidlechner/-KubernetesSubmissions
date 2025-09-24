@@ -1,6 +1,5 @@
 import { connect, JSONCodec } from 'nats';
 import fetch from 'node-fetch';
-import 'dotenv/config';
 
 const initNats = async () => {
   while (true) {
