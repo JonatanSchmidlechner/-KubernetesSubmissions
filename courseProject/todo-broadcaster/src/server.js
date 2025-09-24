@@ -16,7 +16,7 @@ const initNats = async () => {
 };
 
 const startSubscriber = async (conn) => {
-  const sub = conn.subscribe('alerts');
+  const sub = conn.subscribe('alerts', { queue: 'broadcasters' });
   const jc = JSONCodec();
   for await (const msg of sub) {
     const data = jc.decode(msg.data);
@@ -26,7 +26,7 @@ const startSubscriber = async (conn) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        content: `A todo was ${data.type}: ${todo}`,
+        content: `A todo was ${data.type}d: ${todo}`,
       }),
     });
   }
