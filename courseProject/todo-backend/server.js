@@ -1,11 +1,11 @@
 import express from 'express';
 import { pool } from './db/index.js';
-import { nc } from './nats/index.js';
+import { initNats } from './nats/index.js';
 import { JSONCodec } from 'nats';
 const port = process.env.PORT || 3002;
 const app = express();
 app.use(express.json());
-const conn = await nc;
+const conn = await initNats();
 
 app.get('/todos', async (req, res) => {
   try {

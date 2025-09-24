@@ -20,7 +20,7 @@ const startSubscriber = async (conn) => {
   const jc = JSONCodec();
   for await (const msg of sub) {
     const data = jc.decode(msg.data);
-    console.log(`[${sub.getProcessed()}]: ${data}`);
+    console.log(`[${sub.getProcessed()}]: ${data.todo}`);
     const res = await fetch(process.env.DISCORD_WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

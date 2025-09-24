@@ -1,5 +1,5 @@
 import { connect } from 'nats';
-const initNats = async () => {
+export const initNats = async () => {
   while (true) {
     try {
       const nc = await connect({
@@ -12,5 +12,3 @@ const initNats = async () => {
     }
   }
 };
-
-export const nc = initNats();
