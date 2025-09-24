@@ -58,4 +58,10 @@ spec:
                   name: postgres-config
                   key: postgres_port
             - name: NATS_URL
-              value: nats://my-nats:4222
+              value: nats://my-nats.default.svc.cluster.local:4222
+
+
+
+
+
+              
