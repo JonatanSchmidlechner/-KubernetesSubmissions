@@ -1,8 +1,11 @@
 import express from 'express';
 import { pool } from './db/index.js';
+import { nc } from './nats/index.js';
+import { JSONCodec } from 'nats';
 const port = process.env.PORT || 3002;
 const app = express();
 app.use(express.json());
+const conn = await nc;
 
 app.get('/todos', async (req, res) => {
   try {
@@ -15,6 +18,7 @@ app.get('/todos', async (req, res) => {
   }
 });
 app.post('/todos', async (req, res) => {
+  const jc = JSONCodec();
   try {
     const newTodo = req.body.todo;
     console.log(newTodo);
@@ -35,7 +39,9 @@ app.post('/todos', async (req, res) => {
     };
     const result = await pool.query(query);
     if (result.rowCount === 1) {
-      res.status(201).send(result.rows[0]);
+      const savedTodo = result.rows[0];
+      conn.publish('alerts', jc.encode({ todo: savedTodo, type: 'Post' }));
+      res.status(201).json({ value: savedTodo });
     } else {
       res.status(500).json({ message: 'Error in inserting to database.' });
     }
@@ -47,12 +53,9 @@ app.post('/todos', async (req, res) => {
 });
 
 app.put('/todos/:id', async (req, res) => {
+  const jc = JSONCodec();
   const todoId = req.params.id;
-  console.log('todoId: ', todoId);
-  const intTodoId = parseInt(todoId, 10);
-  console.log('Integer todoId: ', intTodoId);
   const doneValue = req.body.done;
-  console.log('done value: ', doneValue);
   if (isNaN(todoId)) {
     return res.status(400).json({ message: 'Invalid todo id' });
   }
@@ -65,8 +68,9 @@ app.put('/todos/:id', async (req, res) => {
     if (result.rowCount === 0) {
       return res.status(404).json({ message: 'Todo not found' });
     }
-
-    res.status(200).json(result.rows[0]);
+    const updatedTodo = result.rows[0];
+    conn.publish('alerts', jc.encode({ todo: updatedTodo, type: 'Update' }));
+    res.status(200).json({ value: updatedTodo });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Database update failed' });

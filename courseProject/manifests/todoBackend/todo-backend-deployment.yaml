@@ -57,3 +57,5 @@ spec:
                 configMapKeyRef:
                   name: postgres-config
                   key: postgres_port
+            - name: NATS_URL
+              value: nats://my-nats:4222

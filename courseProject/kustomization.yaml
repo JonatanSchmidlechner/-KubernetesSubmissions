@@ -5,11 +5,16 @@ resources:
   - manifests/todoBackend
   - manifests/todoGenerator
   - manifests/todoApp
-#  - manifests/todoBackuper
+  - manifests/todoBackuper
+  - manifests/todoBroadcaster
 images:
   - name: todo-app
-    newName: jonschm/todoapp:test1
+    newName: jonschm/todoapp:4.6
   - name: todo-backend
-    newName: jonschm/todo-backend:test1
+    newName: jonschm/todo-backend:4.6
   - name: todo-generator
-    newName: jonschm/todo-generator:test1
+    newName: jonschm/todo-generator:4.6
+  - name: todo-backuper
+    newName: jonschm/todo-backuper:4.6
+  - name: todo-broadcaster
+    newName: jonschm/todo-broadcaster:4.6
