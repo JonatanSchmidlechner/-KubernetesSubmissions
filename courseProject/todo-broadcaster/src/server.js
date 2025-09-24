@@ -1,5 +1,6 @@
 import { connect, JSONCodec } from 'nats';
 import fetch from 'node-fetch';
+import 'dotenv/config';
 
 const initNats = async () => {
   while (true) {
@@ -20,12 +21,13 @@ const startSubscriber = async (conn) => {
   const jc = JSONCodec();
   for await (const msg of sub) {
     const data = jc.decode(msg.data);
-    console.log(`[${sub.getProcessed()}]: ${data.todo}`);
+    const todo = JSON.stringify(data.todo);
+    console.log(`[${sub.getProcessed()}]: ${todo}`);
     const res = await fetch(process.env.DISCORD_WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        content: `A todo was ${data.type}: ${JSON.stringify(data.todo)}`,
+        content: `A todo was ${data.type}: ${todo}`,
       }),
     });
   }
