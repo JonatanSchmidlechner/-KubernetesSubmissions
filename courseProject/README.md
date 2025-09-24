@@ -13,6 +13,12 @@
 kubectl create secret generic gcp-credentials   --from-file=gcp-key.json=./private-key.json  -n project
 ```
 
+- For the todo-observers to be able to send messages to discord, the URL needs to be added as an env variable "DISCORD_WEBHOOK" in a secret "discord-webhook" to namespace "project". Example:
+
+```powershell
+kubectl create secret generic discord-webhook --from-literal=DISCORD_WEBHOOK="https://study.cs.helsinki.fi/discord/webhooks/<secret_code>" -n project
+```
+
 1. Clone the repository at a tagged release:
 
 ```powershell

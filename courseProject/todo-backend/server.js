@@ -42,7 +42,7 @@ app.post('/todos', async (req, res) => {
       const savedTodo = result.rows[0];
       console.log('conn: ', conn);
       console.log('todo: ', savedTodo);
-      conn.publish('alerts', jc.encode({ todo: savedTodo, type: 'post' }));
+      conn.publish('alerts', jc.encode({ todo: savedTodo, type: 'save' }));
       res.status(201).json({ value: savedTodo });
     } else {
       res.status(500).json({ message: 'Error in inserting to database.' });
