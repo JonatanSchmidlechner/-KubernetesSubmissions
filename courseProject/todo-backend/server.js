@@ -40,6 +40,8 @@ app.post('/todos', async (req, res) => {
     const result = await pool.query(query);
     if (result.rowCount === 1) {
       const savedTodo = result.rows[0];
+      console.log('conn: ', conn);
+      console.log('todo: ', savedTodo);
       conn.publish('alerts', jc.encode({ todo: savedTodo, type: 'Post' }));
       res.status(201).json({ value: savedTodo });
     } else {
