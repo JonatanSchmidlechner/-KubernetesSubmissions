@@ -1,5 +1,5 @@
 import { connect, JSONCodec } from 'nats';
-import { fetch } from 'node-fetch';
+import fetch from 'node-fetch';
 
 const initNats = async () => {
   while (true) {
