@@ -52,7 +52,7 @@ jobs:
 
       - name: Build and push all apps
         run: |
-          cd logOutput-pingpong
+          cd courseProject
           for app in todo-app todo-backend todo-broadcaster todo-generator todo-backuper; do
             IMAGE_TAG=$REGISTRY/$PROJECT_ID/$REPOSITORY/$app:$BRANCH-$GITHUB_SHA
             echo "Building $app -> $IMAGE_TAG"
@@ -64,7 +64,7 @@ jobs:
       - name: Commit and push updated kustomization.yaml
         uses: EndBug/add-and-commit@v9
         with:
-          add: 'logOutput-pingpong/kustomization.yaml'
+          add: 'courseProject/kustomization.yaml'
           message: "Update images to ${{ github.sha }}"
           push: true
 
