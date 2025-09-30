@@ -7,4 +7,7 @@ resources:
 namespace: staging
 
 patches:
-  - path: todo-broadcaster-dep.yaml
+- target:
+    kind: Deployment
+    name: todo-broadcaster
+  path: todo-broadcaster-env.yaml
