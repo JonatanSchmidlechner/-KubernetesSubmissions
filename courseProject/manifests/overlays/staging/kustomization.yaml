@@ -6,5 +6,5 @@ resources:
   - namespace.yaml
 namespace: staging
 
-patchesStrategicMerge:
-  - todo-broadcaster-dep.yaml
+patches:
+  - path: todo-broadcaster-dep.yaml
