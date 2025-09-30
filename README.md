@@ -53,3 +53,4 @@
 - [4.3.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/blob/4.3/courseProject/prometheusQuery.txt)
 - [4.5.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/tree/4.5/courseProject)
 - [4.6.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/tree/4.6/courseProject)
+- [4.7.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/blob/4.7/.github/workflows/logOutput-pingpong.yaml)
