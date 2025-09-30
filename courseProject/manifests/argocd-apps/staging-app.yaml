@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
-    targetRevision: main     
+    targetRevision: HEAD     
     path: courseProject/manifests/overlays/staging
   destination:
     server: https://kubernetes.default.svc
