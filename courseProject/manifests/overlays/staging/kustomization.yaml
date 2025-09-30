@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
 - ../../base
 - namespace.yaml
-- todo-broadcaster-dep.yaml
 namespace: staging
 patches:
   - path: todo-broadcaster-dep.yaml
