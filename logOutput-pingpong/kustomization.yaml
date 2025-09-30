@@ -3,12 +3,10 @@ kind: Kustomization
 
 resources:
   - manifests/base
-  - manifests/logOutput
+  - manifests/log-output
   - manifests/pingpong
 images:
   - name: PINGPONG/IMAGE # must match what's in your Deployment YAML
     newName: jonschm/pingpong
-    newTag: "1.71"
   - name: LOGOUTPUT/IMAGE
     newName: jonschm/log_output
-    newTag: "1.7"
