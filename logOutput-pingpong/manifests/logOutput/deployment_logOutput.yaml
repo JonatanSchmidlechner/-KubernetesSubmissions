@@ -19,7 +19,7 @@ spec:
             name: logoutput-config
       containers:
         - name: logoutput
-          image: LOGOUTPUT/IMAGE
+          image: log-output
           readinessProbe:
             initialDelaySeconds: 10 # Initial delay until the readiness is tested
             periodSeconds: 5 # How often to test

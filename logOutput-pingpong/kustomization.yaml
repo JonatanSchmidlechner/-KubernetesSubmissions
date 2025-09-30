@@ -6,10 +6,6 @@ resources:
 - manifests/logOutput
 - manifests/pingpong
 images:
-- name: LOGOUTPUT/IMAGE
-  newName: jonschm/log_output
-- name: PINGPONG/IMAGE
-  newName: jonschm/pingpong
 - name: log-output
   newName: europe-north1-docker.pkg.dev/dwk-gke-471813/jongcp/log-output
   newTag: main-4260a915a5287fbfc6d413d87b86e263f1b17ba6
