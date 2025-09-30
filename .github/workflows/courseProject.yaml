@@ -61,10 +61,17 @@ jobs:
             kustomize edit set image $app=$IMAGE_TAG
           done
 
+          cd manifests/base
+          kustomize edit set image todo-app=$REGISTRY/$PROJECT_ID/$REPOSITORY/todo-app:$BRANCH-$GITHUB_SHA
+          kustomize edit set image todo-backend=$REGISTRY/$PROJECT_ID/$REPOSITORY/todo-backend:$BRANCH-$GITHUB_SHA
+          kustomize edit set image todo-broadcaster=$REGISTRY/$PROJECT_ID/$REPOSITORY/todo-broadcaster:$BRANCH-$GITHUB_SHA
+          kustomize edit set image todo-generator=$REGISTRY/$PROJECT_ID/$REPOSITORY/todo-generator:$BRANCH-$GITHUB_SHA
+          kustomize edit set image todo-backuper=$REGISTRY/$PROJECT_ID/$REPOSITORY/todo-backuper:$BRANCH-$GITHUB_SHA
+
       - name: Commit and push updated kustomization.yaml
         uses: EndBug/add-and-commit@v9
         with:
-          add: 'courseProject/kustomization.yaml'
+          add: 'courseProject/manifests/basekustomization.yaml'
           message: "Update images to ${{ github.sha }}"
           push: true
 
