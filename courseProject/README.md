@@ -48,7 +48,7 @@ kubectl apply -k .
 4. Wait for the app to deploy and check the Address
 
 ```powershell
-kubectl get gateway -n project todoapp-gateway --watch
+kubectl get gateway -n production todoapp-gateway --watch
 ```
 
 5. Then open the app in browser using the URL below. This will take a moment to deploy, responses may be 404 and 502 as it becomes available:
@@ -85,5 +85,3 @@ kubectl get gateway -n project todoapp-gateway --watch
 - Cost is probably more unpredictable, since the cost now comes from multiple seperate resources (which together form the database) being run instead of a single database service.
 - More work to setup and maintain.
 - No ready made services. You need to handle backups etc.
-
-test
