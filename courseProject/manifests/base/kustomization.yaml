@@ -1,12 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- manifests/base
-- manifests/todoBackend
-- manifests/todoGenerator
-- manifests/todoApp
-- manifests/todoBackuper
-- manifests/todoBroadcaster
+- base
+- todoBackend
+- todoGenerator
+- todoApp
+- todoBackuper
+- todoBroadcaster
 images:
 - name: todo-app
   newName: europe-north1-docker.pkg.dev/dwk-gke-471813/jongcp/todo-app

@@ -36,7 +36,7 @@ git clone --branch 4.9 --depth 1 https://github.com/JonatanSchmidlechner/-Kubern
 2. Change directory to the project directory:
 
 ```powershell
-cd .\-KubernetesSubmissions\courseProject/
+cd .\-KubernetesSubmissions\courseProject/manifests/overlays/prod
 ```
 
 3. Apply manifest files:
