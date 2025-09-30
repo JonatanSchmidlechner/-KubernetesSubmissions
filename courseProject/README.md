@@ -19,6 +19,14 @@ kubectl create secret generic gcp-credentials   --from-file=gcp-key.json=./priva
 kubectl create secret generic discord-webhook --from-literal=DISCORD_WEBHOOK="https://study.cs.helsinki.fi/discord/webhooks/<secret_code>" -n project
 ```
 
+-- NATS is required and can be installed using commands below:
+
+```powershell
+helm repo add nats https://nats-io.github.io/k8s/helm/charts/
+helm repo update
+helm install my-nats nats/nats --namespace default --set auth.enabled=false --set cluster.enabled=false
+```
+
 1. Clone the repository at a tagged release:
 
 ```powershell
