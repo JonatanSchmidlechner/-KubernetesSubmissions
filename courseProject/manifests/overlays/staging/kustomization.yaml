@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - ../../base
 - namespace.yaml
+- backuper-cronjob.yaml
 namespace: staging
 patches:
   - path: todo-broadcaster-dep.yaml
