@@ -8,7 +8,7 @@ resources:
 images:
 - name: log-output
   newName: europe-north1-docker.pkg.dev/dwk-gke-471813/jongcp/log-output
-  newTag: main-4260a915a5287fbfc6d413d87b86e263f1b17ba6
+  newTag: main-dd0d5aab040a1dcba046fbd68783b16e67c07eb3
 - name: pingpong
   newName: europe-north1-docker.pkg.dev/dwk-gke-471813/jongcp/pingpong
-  newTag: main-4260a915a5287fbfc6d413d87b86e263f1b17ba6
+  newTag: main-dd0d5aab040a1dcba046fbd68783b16e67c07eb3
