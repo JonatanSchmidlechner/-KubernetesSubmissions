@@ -77,3 +77,5 @@ kubectl get gateway -n project todoapp-gateway --watch
 - Cost is probably more unpredictable, since the cost now comes from multiple seperate resources (which together form the database) being run instead of a single database service.
 - More work to setup and maintain.
 - No ready made services. You need to handle backups etc.
+
+test
