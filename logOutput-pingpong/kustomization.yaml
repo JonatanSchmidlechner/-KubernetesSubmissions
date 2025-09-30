@@ -2,11 +2,17 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - manifests/base
-  - manifests/logOutput
-  - manifests/pingpong
+- manifests/base
+- manifests/logOutput
+- manifests/pingpong
 images:
-  - name: PINGPONG/IMAGE # must match what's in your Deployment YAML
-    newName: jonschm/pingpong
-  - name: LOGOUTPUT/IMAGE
-    newName: jonschm/log_output
+- name: LOGOUTPUT/IMAGE
+  newName: jonschm/log_output
+- name: PINGPONG/IMAGE
+  newName: jonschm/pingpong
+- name: log-output
+  newName: europe-north1-docker.pkg.dev/dwk-gke-471813/jongcp/log-output
+  newTag: main-4260a915a5287fbfc6d413d87b86e263f1b17ba6
+- name: pingpong
+  newName: europe-north1-docker.pkg.dev/dwk-gke-471813/jongcp/pingpong
+  newTag: main-4260a915a5287fbfc6d413d87b86e263f1b17ba6
