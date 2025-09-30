@@ -38,3 +38,5 @@ kubectl get gateway -n exercises logoutput-pingpong-gateway --watch
 - `http://<EXTERNAL-IP>/pingpong`
 
 Since in this version the /pingpong route was internally changed to /, the pingCount increases automatically. Probably because of healthchecks.
+
+test
