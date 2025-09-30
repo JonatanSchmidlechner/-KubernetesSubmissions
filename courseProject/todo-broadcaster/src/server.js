@@ -21,16 +21,19 @@ const startSubscriber = async (conn) => {
   for await (const msg of sub) {
     const data = jc.decode(msg.data);
     const todo = JSON.stringify(data.todo);
-    console.log(`[${sub.getProcessed()}]: ${todo}`);
-    const res = await fetch(process.env.DISCORD_WEBHOOK, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        content: `A todo was ${data.type}d: ${todo}`,
-      }),
-    });
+    if (process.env.ENV === 'production') {
+      const res = await fetch(process.env.DISCORD_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content: `A todo was ${data.type}d: ${todo}`,
+        }),
+      });
+    } else {
+      console.log(`[${sub.getProcessed()}]: ${todo}`);
+    }
   }
 };
-
+console.log(process.env.ENV);
 const conn = await initNats();
 startSubscriber(conn);
