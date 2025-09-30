@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your/repo.git
+    repoURL: https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
     targetRevision: '[0-9]*.[0-9]*'
     path: courseProject/manifests/overlays/prod
   destination:
