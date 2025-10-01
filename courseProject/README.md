@@ -1,5 +1,7 @@
 # Todo app
 
+The config repository can be found here: [dwk_config_repo](https://github.com/JonatanSchmidlechner/dwk_configs)
+
 ## Deployment instructions
 
 ### Prerequisites
