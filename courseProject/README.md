@@ -30,7 +30,7 @@ helm install my-nats nats/nats --namespace default --set auth.enabled=false --se
 1. Clone the repository at a tagged release:
 
 ```powershell
-git clone --branch 4.9 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
+git clone --branch 4.10 --depth 1 https://github.com/JonatanSchmidlechner/-KubernetesSubmissions.git
 ```
 
 2. Change directory to the project directory:

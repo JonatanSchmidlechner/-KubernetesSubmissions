@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: project-config
-data:
-  todo_backend_url: http://todo-backend-svc:2346
