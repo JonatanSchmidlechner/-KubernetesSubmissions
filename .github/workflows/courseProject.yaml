@@ -80,6 +80,8 @@ jobs:
       - name: Commit and push updated kustomization.yaml
         run: |
           cd dwk_configs
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git config --unset-all http.https://github.com/.extraheader
           git add manifests/base/kustomization.yaml
           git commit -m "Automatic update images via GitHub Action" || echo "No changes to commit"
