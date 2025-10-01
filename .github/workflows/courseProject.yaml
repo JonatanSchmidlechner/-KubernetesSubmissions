@@ -86,7 +86,7 @@ jobs:
           git add manifests/base/kustomization.yaml
           git commit -m "Automatic update images via GitHub Action" || echo "No changes to commit"
           echo "My DEBUGG MESSAGE IS HERE: ${GITHUB_EVENT_REF_TYPE}, ${GITHUB_REF_NAME}"
-          if [ "${GITHUB_EVENT_REF_TYPE}" = "main" ]; then
+          if [ "${GITHUB_EVENT_REF_TYPE}" = "tag" ]; then
             git tag "${GITHUB_REF_NAME}"
             git push https://x-access-token:${CONFIG_REPO_TOKEN}@github.com/JonatanSchmidlechner/dwk_configs.git "${GITHUB_REF_NAME}"
           else
@@ -94,7 +94,7 @@ jobs:
           fi
         env:
           GITHUB_REF_NAME: ${{ github.ref_name }}
-          GITHUB_EVENT_REF_TYPE: ${{ github.event.ref_type }}
+          GITHUB_EVENT_REF_TYPE: ${{ github.ref_type }}
           CONFIG_REPO_TOKEN: ${{ secrets.CONFIG_REPO_TOKEN }}
 
   delete:
