@@ -83,6 +83,7 @@ jobs:
           add: "dwk_configs/manifests/base/kustomization.yaml"
           message: "Update images to $GITHUB_SHA"
           push: true
+          cwd: dwk_configs
 
   delete:
     if: github.event_name == 'delete' && github.event.ref_type == 'branch'
