@@ -80,7 +80,7 @@ jobs:
       - name: Commit and push updated kustomization.yaml
         uses: EndBug/add-and-commit@v9
         with:
-          add: "dwk_configs/manifests/base/kustomization.yaml"
+          add: "manifests/base/kustomization.yaml"
           message: "Update images to $GITHUB_SHA"
           push: true
           cwd: dwk_configs
