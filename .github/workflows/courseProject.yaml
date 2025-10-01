@@ -81,8 +81,9 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: "manifests/base/kustomization.yaml"
-          message: "Update images to $GITHUB_SHA"
+          message: ${{ github.event.ref_type == 'tag' && format('Update images for tag {}', github.ref_name) || format('Update images for commit {}', github.sha) }}
           push: true
+          tag: ${{ github.event.ref_type == 'tag' && github.ref_name || '' }}
           cwd: dwk_configs
 
   delete:
