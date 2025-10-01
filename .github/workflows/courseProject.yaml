@@ -63,7 +63,7 @@ jobs:
       - name: Checkout config repo
         uses: actions/checkout@v4
         with:
-          repository: https://github.com/JonatanSchmidlechner/dwk_configs.git
+          repository: JonatanSchmidlechner/dwk_configs
           token: ${{ secrets.CONFIG_REPO_TOKEN }}
           path: dwk_configs
           fetch-depth: 0
