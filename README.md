@@ -1,4 +1,16 @@
 # -KubernetesSubmissions
+The repository contains many realeases that mostly built on top of older releases. These releases were submissions for individual exercises. Overall, the project contains 2 dummy microservice arhitecture based applications, which are managed with kubernetes. You can find a link for each release below. These links may point to specific files or directories. The later release you choose, the more advanced kubernetes related setup is present. In the very last release the kubernetes manifest files are moved to a separate repository.
+
+The repository demonstrates the following skills and concepts:
+
+- Container orchestration and scaling of applications
+- Automatic container recovery using Deployments
+- Resource management with CPU and RAM requests/limits for containers
+- Rolling updates with zero downtime
+- Configuration and secret management using ConfigMaps and Secrets
+- Deployment automation and CI/CD with GitHub Actions
+- Deploying dummy applications to local clusters and Google Kubernetes Engine (GKE)
+- Writing and applying YAML manifests for Pods, Deployments, and Services
 
 ## Exercises
 
