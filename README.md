@@ -1,5 +1,5 @@
 # -KubernetesSubmissions
-The repository contains many realeases that mostly built on top of older releases. These releases were submissions for individual exercises. Overall, the project contains 2 dummy microservice arhitecture based applications, which are managed with kubernetes. You can find a link for each release below. These links may point to specific files or directories. The later release you choose, the more advanced kubernetes related setup is present. In the very last release the kubernetes manifest files are moved to a separate repository.
+The repository contains many realeases that mostly built on top of older releases. These releases were submissions for individual exercises. Overall, the project contains 2 dummy microservice arhitecture based applications, which are managed with kubernetes. You can find a link for each release below. These links may point to specific files or directories. The later release you choose, the more advanced kubernetes related setup is present. In the very last release the kubernetes manifest files are moved to a separate repository. You can for example check out the second last release: [4.9.](https://github.com/JonatanSchmidlechner/-KubernetesSubmissions/tree/4.9/courseProject)
 
 The repository demonstrates the following skills and concepts:
 
